@@ -1,0 +1,21 @@
+[build-system]
+requires = ['setuptools', 'setuptools-scm']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'utilitools'
+description = 'Python utilities'
+license = {text = 'MIT'}
+dynamic = ['version', 'readme']
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+]
+
+[tool.setuptools]
+packages = ['utilitools']
+
+[tool.setuptools.dynamic]
+version = {attr = 'utilitools.__version__'}
+readme = {file = ['README.md']}
