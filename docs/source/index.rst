@@ -1,15 +1,12 @@
 utilitools
 ==========
-
-A collection of utilities for Python language.
+A collection of utilities.
 
 Installation
 ------------
-using pip::
-
  pip install utilitools
 
-Collection
-----------
+Utilities
+---------
 - `singleton <https://utilitools.readthedocs.io/en/latest/singleton>`_
 - `subscriptable <https://utilitools.readthedocs.io/en/latest/subscriptable>`_
