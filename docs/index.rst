@@ -11,5 +11,5 @@ using pip::
 
 Collection
 ----------
-- `singleton <https://utilitools.readthedocs.io/en/latest/collection/singleton>`_
-- `subscriptable <https://utilitools.readthedocs.io/en/latest/collection/subscriptable>`_
+- `singleton <https://utilitools.readthedocs.io/en/latest/singleton>`_
+- `subscriptable <https://utilitools.readthedocs.io/en/latest/subscriptable>`_
