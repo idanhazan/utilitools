@@ -18,6 +18,8 @@ dynamic = ['version']
 
 [project.urls]
 homepage = 'https://github.com/idanhazan/utilitools'
+repository = 'https://github.com/idanhazan/utilitools'
+documentation = 'https://utilitools.readthedocs.io'
 
 [tool.setuptools]
 packages = ['utilitools']
