@@ -12,7 +12,6 @@ Usage
 -----
 
 .. code-block:: python
-   :caption: singleton.py
 
    from utilitools import Singleton
 
