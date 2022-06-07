@@ -10,8 +10,8 @@ Installation
 
  pip install utilitools
 
-Utilities
----------
+Collection
+----------
 
 - `singleton <https://utilitools.readthedocs.io/en/latest/singleton>`_
 - `subscriptable <https://utilitools.readthedocs.io/en/latest/subscriptable>`_
