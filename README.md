@@ -1,4 +1,7 @@
 # utilitools
-A collection of Python utilities:
-- [singleton](https://github.com/idanhazan/utilitools/blob/main/notebooks/singleton.ipynb)
-- [subscriptable](https://github.com/idanhazan/utilitools/blob/main/notebooks/subscriptable.ipynb)
+
+A collection of utilities
+
+Installation: `pip intall utilitools`
+
+Documentation: https://utilitools.readthedocs.io
