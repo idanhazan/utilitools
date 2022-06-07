@@ -21,8 +21,8 @@ Usage
            self.args = args
            self.kwargs = kwargs
 
-   def __repr__(self):
-       return f'{self.__class__.__name__}(args={self.args}, kwargs={self.kwargs})'
+       def __repr__(self):
+           return f'{self.__class__.__name__}(args={self.args}, kwargs={self.kwargs})'
 
    if __name__ == '__main__':
        SharedResource(1, 2, x=10, y=20)  # SharedResource(args=(1, 2), kwargs={'x': 10, 'y': 20})
