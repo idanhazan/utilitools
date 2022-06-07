@@ -12,7 +12,6 @@ Usage
 -----
 
 .. code-block:: python
-   :caption: subscriptable.py
 
    from utilitools import subscriptable
 
