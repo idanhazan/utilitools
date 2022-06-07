@@ -3,6 +3,11 @@ singleton
 
 Singleton pattern is a software design pattern that restricts the instantiation of a class to one "single" instance.
 
+Source
+------
+
+https://github.com/idanhazan/utilitools/blob/main/utilitools/singleton.py
+
 Usage
 -----
 
