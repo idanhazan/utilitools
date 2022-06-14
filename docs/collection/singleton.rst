@@ -3,6 +3,12 @@ singleton
 
 Singleton pattern is a software design pattern that restricts the instantiation of a class to one "single" instance.
 
+Usefulness
+----------
+
+Logging is a specific example of an "acceptable" Singleton because it doesn't affect the execution of the code.
+
+
 Source
 ------
 
@@ -13,9 +19,9 @@ Usage
 
 .. code-block:: python
 
-   from utilitools import Singleton
+   from utilitools import singleton
 
-   class SharedResource(metaclass=Singleton):
+   class Singleton(metaclass=singleton):
        def __init__(self, *args, **kwargs):
            self.args = args
            self.kwargs = kwargs
@@ -24,6 +30,6 @@ Usage
            return f'{self.__class__.__name__}(args={self.args}, kwargs={self.kwargs})'
 
    if __name__ == '__main__':
-       SharedResource(1, 2, x=10, y=20)  # SharedResource(args=(1, 2), kwargs={'x': 10, 'y': 20})
-       SharedResource().args             # (1, 2)
-       SharedResource().kwargs           # {'x': 10, 'y': 20}
+       Singleton(1, 2, x=10, y=20)  # Singleton(args=(1, 2), kwargs={'x': 10, 'y': 20})
+       Singleton().args             # (1, 2)
+       Singleton().kwargs           # {'x': 10, 'y': 20}
