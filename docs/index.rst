@@ -13,6 +13,7 @@ Installation
 Collection
 ----------
 
+- `partial <https://utilitools.readthedocs.io/en/latest/collection/partial.html>`_
 - `singleton <https://utilitools.readthedocs.io/en/latest/collection/singleton.html>`_
 - `subscriptable <https://utilitools.readthedocs.io/en/latest/collection/subscriptable.html>`_
 
