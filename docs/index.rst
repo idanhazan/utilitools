@@ -23,5 +23,6 @@ Collection
    :maxdepth: 2
    :hidden:
 
+   collection/partial
    collection/singleton
    collection/subscriptable
