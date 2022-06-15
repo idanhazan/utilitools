@@ -1,15 +1,15 @@
 subscriptable
 =============
 
-Subscriptable (in Python) means that an object implements ``__getitem__(self, key)`` magic method.
+Subscriptable (in Python) means that an object implements the ``__getitem__(self, key)`` magic method.
 
 Usefulness
 ----------
 
-Assume that there are 2 types of sequences:
+There are two types of sequences:
 
-- Recursive sequence (called **rs**)
-- Non-recursive sequence (called **nrs**)
+- Recursive sequence (acronyms for **rs**)
+- Non-recursive sequence (acronyms for **nrs**)
 
 The sequences look like this:
 
@@ -23,24 +23,41 @@ The sequences look like this:
     def nrs(n):
         return n
 
-If we want to get the 25th value:
+To get a specific value or list of values from the sequences, we can use this table:
 
-- rs: ``next(itertools.islice(rs(), 25, 26))``
-- nrs: ``nrs(25)``
+.. list-table::
+   :widths: 10 10 40 40
+   :header-rows: 1
 
-If we want to get the values between 10 and 20 in steps of 3:
+   * - Sequence
+     - Bracket
+     - Index
+     - Slice
+   * - rs
+     - (...)
+     - ``next(islice(rs(), 25, 26))``
+     - ``list(islice(rs(), 10, 20, 3))``
+   * - nrs
+     - (...)
+     - ``nrs(25)``
+     - ``list(nrs(n) for n in range(10, 20, 3))``
+   * - rs
+     - [...]
+     - ``rs[25]``
+     - ``rs[10:20:3]``
+   * - nrs
+     - [...]
+     - ``nrs[25]``
+     - ``nrs[10:20:3]``
 
-- rs: ``list(itertools.islice(rs(), 10, 20, 3))``
-- nrs: ``list(i for i in range(10, 20, 3))``
+.. note::
+   The ``islice`` function is part of the `itertools <https://docs.python.org/3/library/itertools.html#itertools.islice>`_ package.
 
-This task can be elegantly written as follows:
-
-- rs: ``rs[25]`` or ``rs[10:20:3]``
-- nrs: ``nrs[25]`` or ``nrs[10:20:3]``
-
-When trying to use elegant writing, we get an exception:
+When trying to use ``[...]`` brackets, we get an exception:
 
 ``TypeError: 'function' object is not subscriptable``
+
+In this package, subscriptable is a decorator that allows using ``[...]`` brackets on functions.
 
 Source
 ------
