@@ -14,7 +14,8 @@ In Python, there are four types of parameters in function signature:
 - Optional (arguments that can be not passed to the function)
 
 .. note::
-   ``*args`` is a positional-only argument, and ``**kwargs`` is a keyword-only argument. They are both optional arguments.
+    ``*args`` are positional-only arguments, and ``**kwargs`` are keyword-only arguments.
+    They are both optional arguments.
 
 We will focus on positional and keyword arguments only. An example of a function for both:
 
@@ -37,7 +38,8 @@ To illustrate the problem, we will take two built-in functions in Python:
 - ``isinstance`` - `isinstance(object, classinfo) <https://docs.python.org/3/library/functions.html#isinstance>`_
 
 .. note::
-   Python's documentation will show ``isinstance(object, classinfo)`` but in fact it is ``ininstance(obj, class_or_tuple, /)``, this can be checked via `inspect.signature <https://docs.python.org/3/library/inspect.html#inspect.signature>`_
+    Python's documentation will show ``isinstance(object, classinfo)`` but in fact it is ``ininstance(obj, class_or_tuple, /)``,
+    this can be checked via `inspect.signature <https://docs.python.org/3/library/inspect.html#inspect.signature>`_
 
 Using ``pow(base, exp, mod=None)`` by ``functools.partial`` works perfectly:
 
