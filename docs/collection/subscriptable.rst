@@ -26,7 +26,7 @@ The sequences look like this:
 To get a specific value or list of values from the sequences, we can use this table:
 
 .. list-table::
-   :widths: 20 30 50
+   :widths: 15 35 50
    :header-rows: 1
 
    * - Sequence
@@ -45,7 +45,7 @@ To get a specific value or list of values from the sequences, we can use this ta
 Since these are sequences, writing them in a more readable and elegant way is possible. For example:
 
 .. list-table::
-   :widths: 20 30 50
+   :widths: 35 30 35
    :header-rows: 1
 
    * - Sequence
