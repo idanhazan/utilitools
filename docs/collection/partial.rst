@@ -30,7 +30,7 @@ To call the function (where ``a=1``, ``b=2``, ``c=3``), there are only three pos
 - ``func(1, b=2, c=3)``
 - ``func(1, c=3, b=2)``
 
-The limitation of ``itertools.partial`` exists with positional only arguments, which many of Python's built-in functions use.
+The limitation of ``functools.partial`` exists with positional only arguments, which many of Python's built-in functions use.
 
 To illustrate the problem, we will take two built-in functions in Python:
 
