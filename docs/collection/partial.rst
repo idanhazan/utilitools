@@ -14,7 +14,7 @@ In Python, there are four types of parameters in function signature:
 - Optional (arguments that can be not passed to the function)
 
 .. note::
-   ``*args`` is a positional argument, and ``**kwargs`` is a keyword argument. They are both optional arguments.
+   ``*args`` is a positional-only argument, and ``**kwargs`` is a keyword-only argument. They are both optional arguments.
 
 We will focus on positional and keyword arguments only. An example of a function for both:
 
