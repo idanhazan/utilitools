@@ -26,32 +26,37 @@ The sequences look like this:
 To get a specific value or list of values from the sequences, we can use this table:
 
 .. list-table::
-   :widths: 10 10 40 40
+   :widths: 20 30 50
    :header-rows: 1
 
    * - Sequence
-     - Bracket
      - Index
      - Slice
-   * - rs
-     - (...)
+   * - Recursive
      - ``next(islice(rs(), 25, 26))``
      - ``list(islice(rs(), 10, 20, 3))``
-   * - nrs
-     - (...)
+   * - Non-recursive
      - ``nrs(25)``
      - ``list(nrs(n) for n in range(10, 20, 3))``
-   * - rs
-     - [...]
-     - ``rs[25]``
-     - ``rs[10:20:3]``
-   * - nrs
-     - [...]
-     - ``nrs[25]``
-     - ``nrs[10:20:3]``
 
 .. note::
    The ``islice`` function is part of the `itertools <https://docs.python.org/3/library/itertools.html#itertools.islice>`_ package.
+
+Since these are sequences, writing them in a more readable and elegant way is possible. For example:
+
+.. list-table::
+   :widths: 20 30 50
+   :header-rows: 1
+
+   * - Sequence
+     - Index
+     - Slice
+   * - Recursive
+     - ``rs[25]``
+     - ``rs[10:20:3]``
+   * - Non-recursive
+     - ``nrs[25]``
+     - ``nrs[10:20:3]``
 
 When trying to use ``[...]`` brackets, we get an exception:
 
