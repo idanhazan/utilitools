@@ -8,7 +8,7 @@ Usefulness
 
 In Python, there are four types of parameters in function signature:
 
-- Positional (arguments that can be called by their position in the function call)
+- Positional (arguments that can be called by their position)
 - Keyword (arguments that can be called by their name)
 - Required (arguments that must passed to the function)
 - Optional (arguments that can be not passed to the function)
