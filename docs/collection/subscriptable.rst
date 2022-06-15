@@ -23,7 +23,7 @@ The sequences look like this:
     def nrs(n):
         return n
 
-To get a specific value or list of values from the sequences, we can use this table:
+To get a specific value or list of values from each sequence:
 
 .. list-table::
    :widths: 15 35 50
@@ -40,9 +40,9 @@ To get a specific value or list of values from the sequences, we can use this ta
      - ``list(nrs(n) for n in range(10, 20, 3))``
 
 .. note::
-   The ``islice`` function is part of the `itertools <https://docs.python.org/3/library/itertools.html#itertools.islice>`_ package.
+   The ``islice`` function is part of `itertools <https://docs.python.org/3/library/itertools.html#itertools.islice>`_ package.
 
-Since these are sequences, writing them in a more readable and elegant way is possible. For example:
+Since these are sequences, it is possible to use them in a more readable and elegant way:
 
 .. list-table::
    :widths: 35 30 35
