@@ -1,54 +1,65 @@
 partial
 =======
 
-An improved version of ``functools.partial`` which accepts ``Ellipsis (...)`` as a placeholder.
+An improved version of `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_ which accepts ``Ellipsis (...)`` as a placeholder.
 
 Usefulness
 ----------
 
-In Python there is 2 types of arguments in function signature:
+In Python, there are two types of arguments in function signature:
 
 - Positional arguments
 - Keyword arguments
 
-Look at this function signature:
+See an example of both:
 
 .. code-block:: python
 
     def func(a, /, b, *, c):
         print(a, b, c)
 
-There are 3 arguments:
+The types of arguments of the function are:
 
 - ``a`` is ``Positional only``
-- ``b`` is ``Positional & Keyword``
+- ``b`` is ``Positional or Keyword``
 - ``c`` is ``Keyword only``
 
-For ``(a=1, b=2, c=3)`` we can call that function by:
+To call the function (where ``a=1``, ``b=2``, ``c=3``), there are only three possible options:
 
 - ``func(1, 2, c=3)``
 - ``func(1, b=2, c=3)``
 - ``func(1, c=3, b=2)``
 
-As you can see, ``a`` cannot specify as ``a=1`` and ``c`` must specify as ``c=3``
+The limitation of ``itertools.partial`` exists with positional only arguments, which many of Python's built-in functions use.
 
-The limitation of ``itertools.partial`` exists on ``Positional only`` arguments, and most of Python's built-in functions use it.
+To illustrate the problem, we will take two built-in functions in Python:
 
-Let's say we want to check if an iterable contains only integers:
+- `pow(base, exp, mod=None) <https://docs.python.org/3/library/functions.html#int>`_
+- `isinstance(obj, class_or_tuple, /) <https://docs.python.org/3/library/functions.html#isinstance>`_
 
-- Step 1: ``isinstance(object, classinfo, /)``
-- Step 2: ``functools.partial(func, /, *args, **keywords)``
-- Step 3: ``map(function, iterable, ..., /)``
-- Step 4: ``all(iterable, /)``
+.. note::
+   Python's documentation will show ``isinstance(object, classinfo)`` but in fact it is ``ininstance(obj, class_or_tuple, /)``, this can be checked via `inspect.signature <https://docs.python.org/3/library/inspect.html#inspect.signature>`_ by: ``inspect.signature(isinstance)``
 
-Using ``functools.partial`` is impossible:
+Using ``functools.partial``:
 
-- ``all(map(functools.partial(isinstance, int), [1, 2, 3]))`` translated as ``isinstance(classinfo, object, /)``
-- ``all(map(functools.partial(isinstance, classinfo=int), [1, 2, 3]))`` not allowed because of ``/``
+- ``pow(base, exp, mod=None)``
+ - To create a function of 3\ :sup:`n`, use: ``functools.partial(pow, 3)``
+ - To create a function of n\ :sup:`3`, use: ``functools.partial(pow, exp=3)``
+- ``isinstance(obj, class_or_tuple, /)``
+ - Creating a function that checks if an instance is an integer is impossible:
+  - ``functools.partial(isinstance, class_or_tuple=int)`` raise: ``TypeError: isinstance() takes no keyword arguments``
+  - ``functools.partial(isinstance, classinfo=int)`` raise: ``TypeError: isinstance() takes no keyword arguments``
 
-Using ``utilitools.partial`` will solve this problem:
+Using ``utilitools.partial``:
 
-- ``all(map(utilitools.partial(isinstance, ..., int), [1, 2, 3]))``
+- ``pow(base, exp, mod=None)``
+ - To create a function of 3\ :sup:`n`, use: ``utilitools.partial(pow, 3)``
+ - To create a function of n\ :sup:`3`, use: ``utilitools.partial(pow, exp=3)``
+ - To create a function of n\ :sup:`3`, use: ``utilitools.partial(pow, ..., 3)``
+- ``isinstance(obj, class_or_tuple, /)``
+ - To create a function ``is_int``, use: ``utilitools.partial(isinstance, ..., int)``
+
+Each ``Ellipsis (...)`` will skip an argument even if it is positional only.
 
 Source
 ------
