@@ -44,7 +44,7 @@ Using ``pow(base, exp, mod=None)`` by ``functools.partial`` works perfectly:
 - 3\ :sup:`n`: ``functools.partial(pow, 3)``
 - n\ :sup:`3`: ``functools.partial(pow, exp=3)``
 
-Using ``isinstance(obj, class_or_tuple, /)`` by ``functools.partial`` are limited:
+Using ``isinstance(obj, class_or_tuple, /)`` by ``functools.partial`` is impossible:
 
 - isint(obj): ``functools.partial(isinstance, class_or_tuple=int)``
 
