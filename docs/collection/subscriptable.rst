@@ -23,18 +23,21 @@ A piece of code of an infinite sequence implemented by function and generator:
     def generator():
         yield from itertools.count()
 
+Defining abbreviations:
+
+- ``function`` will be called ``f``.
+- ``generator`` will be called ``g``.
+
 Getting a single value can be done using an index and getting multiple values can be done using a slice:
 
-- ``function[index]`` equals to ``function(index)``.
-- ``generator[index]`` equals to ``next(itertools.islice(generator(), index, index + 1))``.
-- ``function[start:stop:step]`` equals to ``list(function(n) for n in range(start, stop, step))``.
-- ``generator[start:stop:step]`` equals to ``list(itertools.islice(generator(), start, stop, step))``.
+- ``f[index]`` equals to ``f(index)``.
+- ``g[index]`` equals to ``next(itertools.islice(g(), index, index + 1))``.
+- ``f[start:stop:step]`` equals to ``list(f(n) for n in range(start, stop, step))``.
+- ``g[start:stop:step]`` equals to ``list(itertools.islice(g(), start, stop, step))``.
 
 .. warning::
-    Be aware, both ``function`` and ``generator``
-    are already implements ``__call__`` but not ``__getitem__``,
-    so without using ``subscriptable`` you will get an exception:
-    ``TypeError: 'function' object is not subscriptable``
+    Both ``f`` and ``g`` by default are already implements ``__call__``, but not ``__getitem__``.
+    Without using ``subscriptable`` you will get an exception: ``TypeError: 'function' object is not subscriptable``.
 
 As you can see, using ``[...]`` is more readable and elegant.
 
