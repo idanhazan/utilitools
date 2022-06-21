@@ -6,63 +6,37 @@ Subscriptable (in Python) means that an object implements the ``__getitem__(self
 Usefulness
 ----------
 
-There are two types of sequences:
+Let's talk about two kinds of magic methods in Python:
 
-- Recursive sequence (acronyms for **rs**)
-- Non-recursive sequence (acronyms for **nrs**)
+- To use ``(...)``, needed implement ``__call__(self, *args, **kwargs)``.
+- To use ``[...]``, needed implement ``__getitem__(self, key)``.
 
-The sequences look like this:
+A piece of code of an infinite sequence implemented by function and generator:
 
 .. code-block:: python
 
     import itertools
 
-    def rs():
-        yield from itertools.count()
-
-    def nrs(n):
+    def function(n):
         return n
 
-To get a specific value or list of values from each sequence:
+    def generator():
+        yield from itertools.count()
 
-.. list-table::
-   :widths: 15 35 50
-   :header-rows: 1
+Getting a single value can be done using an index and getting multiple values can be done using a slice:
 
-   * - Sequence
-     - Index
-     - Slice
-   * - Recursive
-     - ``next(islice(rs(), 25, 26))``
-     - ``list(islice(rs(), 10, 20, 3))``
-   * - Non-recursive
-     - ``nrs(25)``
-     - ``list(nrs(n) for n in range(10, 20, 3))``
+- ``function[index]`` equals to ``function(index)``.
+- ``generator[index]`` equals to ``next(itertools.islice(generator(), index, index + 1))``.
+- ``function[start:stop:step]`` equals to ``list(function(n) for n in range(start, stop, step))``.
+- ``generator[start:stop:step]`` equals to ``list(itertools.islice(generator(), start, stop, step))``.
 
-.. note::
-   The ``islice`` function is part of `itertools <https://docs.python.org/3/library/itertools.html#itertools.islice>`_ package.
+.. warning::
+    Be aware, both ``function`` and ``generator``
+    are already implements ``__call__`` but not ``__getitem__``,
+    so without using ``subscriptable`` you will get an exception:
+    ``TypeError: 'function' object is not subscriptable``
 
-Since these are sequences, it is possible to use them in a more readable and elegant way:
-
-.. list-table::
-   :widths: 35 30 35
-   :header-rows: 1
-
-   * - Sequence
-     - Index
-     - Slice
-   * - Recursive
-     - ``rs[25]``
-     - ``rs[10:20:3]``
-   * - Non-recursive
-     - ``nrs[25]``
-     - ``nrs[10:20:3]``
-
-When trying to use ``[...]`` brackets, we get an exception:
-
-``TypeError: 'function' object is not subscriptable``
-
-In this package, subscriptable is a decorator that allows using ``[...]`` brackets on functions.
+As you can see, using ``[...]`` is more readable and elegant.
 
 Source
 ------
