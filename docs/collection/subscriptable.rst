@@ -36,8 +36,7 @@ Getting a single value can be done using an index and getting multiple values ca
 - ``g[start:stop:step]`` equals to ``list(itertools.islice(g(), start, stop, step))``.
 
 .. warning::
-    Both ``f`` and ``g`` by default are already implements ``__call__``, but not ``__getitem__``.
-    Without using ``subscriptable`` you will get an exception: ``TypeError: 'function' object is not subscriptable``.
+    Both ``f`` and ``g`` by default are already implements ``__call__``, but not ``__getitem__``, that's means you will get an exception: ``TypeError: 'function' object is not subscriptable``.
 
 As you can see, using ``[...]`` is more readable and elegant.
 
