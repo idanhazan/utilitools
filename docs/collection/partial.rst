@@ -6,62 +6,59 @@ An improved version of `functools.partial <https://docs.python.org/3/library/fun
 Usefulness
 ----------
 
-In Python, there are four types of parameters in function signature:
+In Python, there are two types of parameters in function signature:
 
 - Positional (arguments that can be called by their position)
 - Keyword (arguments that can be called by their name)
+
+.. code-block:: python
+
+    def func(a, b, /, c, d, *, e, f):
+        print(a, b, c, d, e, f)
+
+.. note::
+    Parameters before ``/`` are positional-only.
+
+    Parameters between ``/`` to ``*`` are positional-or-keyword.
+
+    Parameters after ``*`` are keyword-only.
+
+Each parameter has two attributes:
+
 - Required (arguments that must passed to the function)
 - Optional (arguments that can be not passed to the function)
 
 .. note::
-    ``*args`` are positional-only arguments, and ``**kwargs`` are keyword-only arguments.
-    They are both optional arguments.
+    ``*args`` are positional-only (optional).
 
-We will focus on positional and keyword arguments only. An example of a function for both:
-
-.. code-block:: python
-
-    def func(a, /, b, *, c):
-        print(a, b, c)
-
-The types of parameters of the function are:
-
-- ``a`` is positional-only argument
-- ``b`` is positional or keyword argument
-- ``c`` is keyword-only argument
+    ``**kwargs`` are keyword-only (optional).
 
 The limitation of ``functools.partial`` exists with positional-only arguments, which many of Python's built-in functions use.
 
 To illustrate the problem, we will take two built-in functions in Python:
 
-- ``pow`` - `pow(base, exp[, mod]) <https://docs.python.org/3/library/functions.html#int>`_
-- ``isinstance`` - `isinstance(object, classinfo) <https://docs.python.org/3/library/functions.html#isinstance>`_
+- The built-in function: `pow(base, exp[, mod]) <https://docs.python.org/3/library/functions.html#int>`_
+- The built-in function: `isinstance(object, classinfo) <https://docs.python.org/3/library/functions.html#isinstance>`_
 
 .. note::
     Python's documentation will show ``isinstance(object, classinfo)`` but in fact it is ``ininstance(obj, class_or_tuple, /)``,
     this can be checked via `inspect.signature <https://docs.python.org/3/library/inspect.html#inspect.signature>`_
 
-Using ``pow(base, exp, mod=None)`` by ``functools.partial`` works perfectly:
+Using ``functools.partial``:
 
-- 3\ :sup:`n`: ``functools.partial(pow, 3)``
-- n\ :sup:`3`: ``functools.partial(pow, exp=3)``
-
-Using ``isinstance(obj, class_or_tuple, /)`` by ``functools.partial`` is impossible:
-
-- isint(obj): ``functools.partial(isinstance, class_or_tuple=int)``
+- Function of 3\ :sup:`n`: ``functools.partial(pow, 3)``
+- Function of n\ :sup:`3`: ``functools.partial(pow, exp=3)``
+- Function of is_int(obj): ``functools.partial(isinstance, class_or_tuple=int)``
 
 .. warning::
-    ``obj`` and ``class_or_tuple`` are positional-only arguments, Therefore we will get an exception: ``TypeError: isinstance() takes no keyword arguments``
+    ``obj`` and ``class_or_tuple`` are positional-only arguments, Therefore we will get an exception: ``TypeError: isinstance() takes no keyword arguments``.
 
-``utilitools.partial`` works the same as ``functools.partial``, with the ability to skip any arguments
+Using ``utilitools.partial``:
 
-Another solution for ``pow(base, exp, mod=None)`` by ``utilitools.partial``:
-
-- n\ :sup:`3`: ``utilitools.partial(pow, ..., 3)``
-
-Working solution for ``isinstance(obj, class_or_tuple, /)`` by ``utilitools.partial``:
-
-- isint(obj): ``utilitools.partial(isinstance, ..., int)``
+- Function of 3\ :sup:`n`: ``utilitools.partial(pow, 3)``
+- Function of n\ :sup:`3`: ``utilitools.partial(pow, exp=3)``
+- Function of n\ :sup:`3`: ``utilitools.partial(pow, ..., 3)``
+- Function of is_int(obj): ``utilitools.partial(isinstance, ..., int)``
 
 Each ``Ellipsis (...)`` will skip an argument depending on the desired order.
 
