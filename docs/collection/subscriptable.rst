@@ -38,7 +38,7 @@ Getting a single value can be done using an index and getting multiple values ca
 .. warning::
     Both ``f`` and ``g`` by default are already implements ``__call__``, but not ``__getitem__``, that's means you will get an exception: ``TypeError: 'function' object is not subscriptable``.
 
-As you can see, using ``[...]`` is more readable and elegant.
+As seen, using ``[...]`` is more readable and elegant than ``(...)``.
 
 Source
 ------
