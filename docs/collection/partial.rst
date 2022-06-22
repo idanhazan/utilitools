@@ -49,6 +49,7 @@ To illustrate the problem, we will take two built-in functions in Python:
 Using ``functools.partial``:
 
 - Function of 3\ :sup:`n`: ``functools.partial(pow, 3)``
+- Function of 3\ :sup:`n`: ``functools.partial(pow, base=3)``
 - Function of n\ :sup:`3`: ``functools.partial(pow, exp=3)``
 - Function of is_int(obj): ``functools.partial(isinstance, class_or_tuple=int)``
 
@@ -58,6 +59,7 @@ Using ``functools.partial``:
 Using ``utilitools.partial``:
 
 - Function of 3\ :sup:`n`: ``utilitools.partial(pow, 3)``
+- Function of 3\ :sup:`n`: ``utilitools.partial(pow, base=3)``
 - Function of n\ :sup:`3`: ``utilitools.partial(pow, exp=3)``
 - Function of n\ :sup:`3`: ``utilitools.partial(pow, ..., 3)``
 - Function of is_int(obj): ``utilitools.partial(isinstance, ..., int)``
@@ -74,8 +76,16 @@ Usage
 
 .. code-block:: python
 
-   from utilitools import partial
+    from utilitools import partial
 
-   if __name__ == '__main__':
-       all(map(partial(isinstance, ..., int), [1, 2, 3])  # True
-       any(map(partial(isinstance, ..., str), [1, 2, 3])  # False
+    def func(a, b, /, c, d, *, e, f):
+        return a, b, c, d, e, f
+
+    if __name__ == '__main__':
+        f1 = partial(func, ..., 2, ..., 4, f=6)
+        f2 = partial(func, ..., 2, ..., d=4, f=6)
+
+        f1(1, 3, e=5)    # 1, 2, 3, 4, 5, 6
+        f1(1, c=3, e=5)  # 1, 2, 3, 4, 5, 6
+        f2(1, 3, e=5)    # 1, 2, 3, 4, 5, 6
+        f2(1, c=3, e=5)  # 1, 2, 3, 4, 5, 6
