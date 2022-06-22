@@ -1,47 +1,38 @@
-import typing
+import itertools
 import unittest
 import utilitools
 
 
 @utilitools.subscriptable(tuple)
-def digit_sum(n):
-    return sum(map(int, str(n)))
+def function(n):
+    return n
 
 
 @utilitools.subscriptable(list)
-def fibonacci():
-    a, b = 0, 1
-    yield a
-    while True:
-        a, b = b, a + b
-        yield a
+def generator():
+    yield from itertools.count()
 
 
 class Test(unittest.TestCase):
-    digit_sum: typing.Any
-    fibonacci: typing.Any
+    def test_function_by_index(self):
+        index = 75
+        self.assertEqual(function[index], index)
 
-    @classmethod
-    def setUpClass(cls):
-        cls.digit_sum = digit_sum
-        cls.fibonacci = fibonacci
+    def test_function_by_slice(self):
+        start, stop, end = 10, 25, 3
+        self.assertEqual(function[:stop], tuple(range(stop)))
+        self.assertEqual(function[start:stop], tuple(range(start, stop)))
+        self.assertEqual(function[start:stop:end], tuple(range(start, stop, end)))
 
-    @classmethod
-    def tearDownClass(cls):
-        del cls.digit_sum
-        del cls.fibonacci
+    def test_generator_by_index(self):
+        index = 75
+        self.assertEqual(generator[index], index)
 
-    def test_digit_sum_by_index(self):
-        self.assertEqual(digit_sum[123], 6)
-
-    def test_digit_sum_by_slice(self):
-        self.assertEqual(digit_sum[10:20:3], (1, 4, 7, 10))
-
-    def test_fibonacci_by_index(self):
-        self.assertEqual(fibonacci[123], 22698374052006863956975682)
-
-    def test_fibonacci_by_slice(self):
-        self.assertEqual(fibonacci[10:20:3], [55, 233, 987, 4181])
+    def test_generator_by_slice(self):
+        start, stop, end = 10, 25, 3
+        self.assertEqual(generator[:stop], list(range(stop)))
+        self.assertEqual(generator[start:stop], list(range(start, stop)))
+        self.assertEqual(generator[start:stop:end], list(range(start, stop, end)))
 
 
 if __name__ == '__main__':
