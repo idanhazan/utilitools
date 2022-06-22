@@ -4,16 +4,16 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'utilitools'
-description = 'Python utilities'
+description = 'A collection of utilities'
 readme = 'README.md'
 license = {text = 'MIT'}
 authors = [{name = 'Idan Hazan'}]
 classifiers = [
     'Programming Language :: Python :: 3',
+    'Topic :: Utilities',
     'License :: OSI Approved :: MIT License',
-    'Operating System :: OS Independent',
 ]
-requires-python = '>= 3.6'
+requires-python = '>= 3.8'
 dynamic = ['version']
 
 [project.urls]
