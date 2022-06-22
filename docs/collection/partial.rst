@@ -6,38 +6,40 @@ An improved version of `functools.partial <https://docs.python.org/3/library/fun
 Usefulness
 ----------
 
-In Python, there are two types of parameters in function signature:
+In Python, there are two kinds of parameters in function signature:
 
 - Positional (arguments that can be called by their position)
 - Keyword (arguments that can be called by their name)
 
 .. code-block:: python
 
-    def func(a, b, /, c, d, *, e, f):
-        print(a, b, c, d, e, f)
+    import inspect
 
-.. note::
-    Parameters before ``/`` are positional-only.
+    def describe(func):
+        for parameter in inspect.signature(func).parameters.values():
+            print(f'Parameter {parameter.name!r} is {parameter.kind.description}.')
 
-    Parameters between ``/`` to ``*`` are positional-or-keyword.
+    if __name__ == '__main__':
+        f1 = lambda a, b, /, c, d, *, e, f: ...
+        f2 = lambda *args, **kwargs: ...
 
-    Parameters after ``*`` are keyword-only.
+        describe(f1)
+        # Parameter 'a' is positional-only.
+        # Parameter 'b' is positional-only.
+        # Parameter 'c' is positional or keyword.
+        # Parameter 'd' is positional or keyword.
+        # Parameter 'e' is keyword-only.
+        # Parameter 'f' is keyword-only.
 
-Each parameter has two attributes:
-
-- Required (arguments that must passed to the function)
-- Optional (arguments that can be not passed to the function)
-
-.. note::
-    ``*args`` are positional-only (optional).
-
-    ``**kwargs`` are keyword-only (optional).
+        describe(f2)
+        # Parameter 'args' is variadic positional.
+        # Parameter 'kwargs' is variadic keyword.
 
 The limitation of ``functools.partial`` exists with positional-only arguments, which many of Python's built-in functions use.
 
 To illustrate the problem, we will take two built-in functions in Python:
 
-- The built-in function: `pow(base, exp[, mod]) <https://docs.python.org/3/library/functions.html#int>`_
+- The built-in function: `pow(base, exp[, mod]) <https://docs.python.org/3/library/functions.html#pow>`_
 - The built-in function: `isinstance(object, classinfo) <https://docs.python.org/3/library/functions.html#isinstance>`_
 
 .. note::
