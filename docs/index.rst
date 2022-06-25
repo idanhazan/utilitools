@@ -8,7 +8,14 @@ Installation
 
 ::
 
- pip install utilitools
+    pip install utilitools
+
+Upgradation
+-----------
+
+::
+
+    pip install utilitools --upgrade
 
 Collection
 ----------
@@ -20,10 +27,10 @@ Collection
 .. Hidden TOCs
 
 .. toctree::
-   :caption: Collection
-   :maxdepth: 2
-   :hidden:
+    :caption: Collection
+    :maxdepth: 2
+    :hidden:
 
-   collection/partial
-   collection/singleton
-   collection/subscriptable
+    collection/partial
+    collection/singleton
+    collection/subscriptable
