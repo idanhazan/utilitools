@@ -2,7 +2,7 @@ import functools
 import itertools
 
 
-class Partial(functools.partial):
+class partial(functools.partial):
     """
     The original `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_
     function with the ability to accept ellipsis as a placeholder.
