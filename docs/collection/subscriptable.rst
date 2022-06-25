@@ -8,12 +8,14 @@ A subscription object (in Python) means it implements the ``__getitem__(self, ke
 Background
 ----------
 
+Subscription is a private case of function use. When needed, it makes the code more readable and, of course, "pythonic" syntax.
+
 .. code-block:: python
 
     def func(*args, **kwargs):
         ...
 
-Valid cases of ``__getitem__``:
+Valid cases of ``__getitem__(self, key)`` where the key is int or slice:
 
 - func[index]
 - func[start:]
