@@ -3,7 +3,6 @@ import inspect
 import itertools
 import math
 import sys
-import typing
 
 
 class Subscription:
@@ -35,7 +34,7 @@ class Subscription:
             return self._type(iterator) if self._type is not None else iterator
 
 
-def subscriptable(sliced_type: typing.Any = None, /) -> typing.Callable[[typing.Any], Subscription]:
+def subscriptable(sliced_type=None, /):
     """
     A decorator that transforms a function into a subscription object.
 
