@@ -34,7 +34,7 @@ class Subscription:
             return self._type(iterator) if self._type is not None else iterator
 
 
-def subscriptable(sliced_type=None, /):
+def subscriptable(sliced_type=None):
     """
     A decorator that transforms a function into a subscription object.
 
