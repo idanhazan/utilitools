@@ -3,7 +3,7 @@ partial
 
 An improved version of `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_ which accepts ``Ellipsis (...)`` as a placeholder.
 
-Usefulness
+Background
 ----------
 
 In Python, there are two kinds of parameters in function signature:
@@ -11,19 +11,18 @@ In Python, there are two kinds of parameters in function signature:
 - Positional (arguments that can be called by their position)
 - Keyword (arguments that can be called by their name)
 
+A piece of code that will show all the parameter kinds:
+
 .. code-block:: python
 
-    import inspect
+    from inspect import signature
 
     def describe(func):
-        for parameter in inspect.signature(func).parameters.values():
-            print(f'Parameter {parameter.name!r} is {parameter.kind.description}.')
+        for parameter in signature(func).parameters.values():
+            yield f'Parameter {parameter.name!r} is {parameter.kind.description}.'
 
     if __name__ == '__main__':
-        f1 = lambda a, b, /, c, d, *, e, f: ...
-        f2 = lambda *args, **kwargs: ...
-
-        describe(f1)
+        print(*describe(lambda a, b, /, c, d, *, e, f: ...), sep='\n')
         # Parameter 'a' is positional-only.
         # Parameter 'b' is positional-only.
         # Parameter 'c' is positional or keyword.
@@ -31,40 +30,34 @@ In Python, there are two kinds of parameters in function signature:
         # Parameter 'e' is keyword-only.
         # Parameter 'f' is keyword-only.
 
-        describe(f2)
+        print(*describe(lambda *args, **kwargs: ...), sep='\n')
         # Parameter 'args' is variadic positional.
         # Parameter 'kwargs' is variadic keyword.
 
-The limitation of ``functools.partial`` exists with positional-only arguments, which many of Python's built-in functions use.
+For more information: `inspect.Parameter.kind <https://docs.python.org/3/library/inspect.html#inspect.Parameter.kind>`_
 
-To illustrate the problem, we will take two built-in functions in Python:
+The limitation of ``functools.partial`` exists with positional-only arguments,
+which many of Python's built-in functions use.
 
-- The built-in function: `pow(base, exp[, mod]) <https://docs.python.org/3/library/functions.html#pow>`_
-- The built-in function: `isinstance(object, classinfo) <https://docs.python.org/3/library/functions.html#isinstance>`_
+Let's take the built-in function: `isinstance <https://docs.python.org/3/library/functions.html#isinstance>`_
 
 .. note::
-    Python's documentation will show ``isinstance(object, classinfo)`` but in fact it is ``ininstance(obj, class_or_tuple, /)``,
-    this can be checked via `inspect.signature <https://docs.python.org/3/library/inspect.html#inspect.signature>`_
+    In Python documentation,
+    the function signature is ``isinstance(object, classinfo)``,
+    but the actual function signature is ``ininstance(obj, class_or_tuple, /)``
 
-Using ``functools.partial``:
+Creating a partial function that checks if an object instance is an integer:
 
-- Function of 3\ :sup:`n`: ``functools.partial(pow, 3)``
-- Function of 3\ :sup:`n`: ``functools.partial(pow, base=3)``
-- Function of n\ :sup:`3`: ``functools.partial(pow, exp=3)``
-- Function of is_int(obj): ``functools.partial(isinstance, class_or_tuple=int)``
+.. code-block:: python
 
-.. warning::
-    ``obj`` and ``class_or_tuple`` are positional-only arguments, Therefore we will get an exception: ``TypeError: isinstance() takes no keyword arguments``.
+    from utilitools import partial
 
-Using ``utilitools.partial``:
+    if __name__ == '__main__':
+        is_integer = partial(isinstance, ..., int)
+        print(is_integer(25))   # True
+        print(is_integer('25')) # False
 
-- Function of 3\ :sup:`n`: ``utilitools.partial(pow, 3)``
-- Function of 3\ :sup:`n`: ``utilitools.partial(pow, base=3)``
-- Function of n\ :sup:`3`: ``utilitools.partial(pow, exp=3)``
-- Function of n\ :sup:`3`: ``utilitools.partial(pow, ..., 3)``
-- Function of is_int(obj): ``utilitools.partial(isinstance, ..., int)``
-
-Each ``Ellipsis (...)`` will skip an argument depending on the desired order.
+Each placeholder allows passing a single argument (including kind of positional-only arguments).
 
 Source
 ------
@@ -82,10 +75,16 @@ Usage
         return a, b, c, d, e, f
 
     if __name__ == '__main__':
-        f1 = partial(func, ..., 2, ..., 4, f=6)
-        f2 = partial(func, ..., 2, ..., d=4, f=6)
+        func1 = partial(func, ..., 2,   3, ..., f=6) # 'c' passed as a positional argument
+        func2 = partial(func, ..., 2, c=3, ..., f=6) # 'c' passed as a keyword argument
 
-        f1(1, 3, e=5)    # 1, 2, 3, 4, 5, 6
-        f1(1, c=3, e=5)  # 1, 2, 3, 4, 5, 6
-        f2(1, 3, e=5)    # 1, 2, 3, 4, 5, 6
-        f2(1, c=3, e=5)  # 1, 2, 3, 4, 5, 6
+        # Because of 'c' passed as a positional argument, 'd' can be given as a positional or keyword argument
+        result1 = func1(1,   4, e=5) # 'd' passed as a positional argument
+        result2 = func1(1, d=4, e=5) # 'd' passed as a keyword argument
+
+        # Because of 'c' passed as a keyword argument, 'd' can be given as a keyword-only argument
+        result3 = func2(1, d=4, e=5) # 'd' passed as keyword argument
+
+        print(result1) # 1, 2, 3, 4, 5, 6
+        print(result2) # 1, 2, 3, 4, 5, 6
+        print(result3) # 1, 2, 3, 4, 5, 6
