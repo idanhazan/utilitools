@@ -38,33 +38,10 @@ def subscriptable(sliced_type=None):
     """
     A decorator that transforms a function into a subscription object.
 
-        >>> from utilitools import subscriptable
-
-        >>> @subscriptable(tuple)
-        >>> def digital_sum(n):
-        >>>    return sum(map(int, str(n)))
-
-        >>> @subscriptable(list)
-        >>> def fibonacci():
-        >>>     a, b = 0, 1
-        >>>     yield a
-        >>>     while True:
-        >>>        a, b = b, a + b
-        >>>         yield a
-
-        >>> digital_sum[123]
-        6
-        >>> digital_sum[10:20:3]
-        (1, 4, 7, 10)
-        >>> fibonacci[123]
-        22698374052006863956975682
-        >>> fibonacci[10:20:3]
-        [55, 233, 987, 4181]
-
     :param sliced_type:
         Slicing can yield more than one value,
-        and you can choose the return type by passing `list` or `tuple` or any else.
-        By default, return an `itertools.islice` object.
+        and you can choose the return type by passing ``list`` or ``tuple`` or any else.
+        By default, return an ``itertools.islice`` object.
     :return:
         A subscription object.
     """
