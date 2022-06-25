@@ -67,3 +67,5 @@ Usage
        digitsum[10:20:3]   # (1, 4, 7, 10)
        fibonacci[123]      # 22698374052006863956975682
        fibonacci[10:20:3]  # [55, 233, 987, 4181]
+
+.. autofunction:: subscriptable
