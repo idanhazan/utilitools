@@ -3,6 +3,8 @@ partial
 
 An improved version of `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_ which accepts ``Ellipsis (...)`` as a placeholder.
 
+.. autoclass:: utilitools.partial
+
 Background
 ----------
 
