@@ -2,7 +2,6 @@ partial
 =======
 
 Partial function application that “freezes” some portion of a function’s arguments and keywords, resulting in a new object with a simplified signature.
-An improved version of `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_ which accepts ``Ellipsis (...)`` as a placeholder.
 
 .. autoclass:: utilitools.partial
 
@@ -56,7 +55,7 @@ Creating a partial function that checks if an object's instance is an integer is
     from functools import partial
 
     if __name__ == '__main__':
-        func = functools.partial(isinstance, class_or_tuple=int)
+        func = partial(isinstance, class_or_tuple=int)
 
 .. warning::
     ``func(25)`` transforms into ``isinstance(25, class_or_tuple=25)``
