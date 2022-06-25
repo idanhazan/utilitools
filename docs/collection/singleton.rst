@@ -3,11 +3,10 @@ singleton
 
 Singleton pattern is a software design pattern that restricts the instantiation of a class to one "single" instance.
 
-Usefulness
+Background
 ----------
 
-Logging is a specific example of an "acceptable" Singleton because it doesn't affect the execution of the code.
-
+A singleton pattern is "acceptable" when it doesn't affect the execution of the code.
 
 Source
 ------
