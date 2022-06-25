@@ -1,6 +1,7 @@
 partial
 =======
 
+Partial function application that “freezes” some portion of a function’s arguments and keywords, resulting in a new object with a simplified signature.
 An improved version of `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_ which accepts ``Ellipsis (...)`` as a placeholder.
 
 .. autoclass:: utilitools.partial
@@ -38,8 +39,8 @@ A piece of code that will show all the parameter kinds:
 
 For more information: `inspect.Parameter.kind <https://docs.python.org/3/library/inspect.html#inspect.Parameter.kind>`_
 
-The limitation of ``functools.partial`` exists with positional-only arguments,
-which many of Python's built-in functions use.
+The limitation of `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_
+exists with positional-only arguments, which many of Python's built-in functions use.
 
 Let's take the built-in function: `isinstance <https://docs.python.org/3/library/functions.html#isinstance>`_
 
@@ -48,23 +49,20 @@ Let's take the built-in function: `isinstance <https://docs.python.org/3/library
     the function signature is ``isinstance(object, classinfo)``,
     but the actual function signature is ``ininstance(obj, class_or_tuple, /)``
 
-Creating a partial function that checks if an object instance is an integer:
+Creating a partial function that checks if an object's instance is an integer is impossible:
 
 .. code-block:: python
 
-    from utilitools import partial
+    from functools import partial
 
     if __name__ == '__main__':
-        is_integer = partial(isinstance, ..., int)
-        print(is_integer(25))   # True
-        print(is_integer('25')) # False
+        func = functools.partial(isinstance, class_or_tuple=int)
 
-Each placeholder allows passing a single argument (including kind of positional-only arguments).
-
-Source
-------
-
-https://github.com/idanhazan/utilitools/blob/main/utilitools/partial.py
+.. warning::
+    ``func(25)`` transforms into ``isinstance(25, class_or_tuple=25)``
+    but ``class_or_tuple`` is a positional-only argument,
+    thus it will raise an exception
+    ``TypeError: isinstance() takes no keyword arguments``
 
 Usage
 -----
