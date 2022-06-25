@@ -6,9 +6,9 @@ import sys
 
 
 class Subscription:
-    def __init__(self, func, sliced_type):
+    def __init__(self, func, iter_type):
         self._func = func
-        self._type = sliced_type
+        self._type = iter_type
 
     def __getitem__(self, key):
         if isinstance(key, int):
@@ -34,17 +34,16 @@ class Subscription:
             return self._type(iterator) if self._type is not None else iterator
 
 
-def subscriptable(sliced_type=None):
+def subscriptable(iter_type=None, /):
     """
     A decorator that transforms a function into a subscription object.
 
-    :param sliced_type:
-        Slicing can yield more than one value,
-        and you can choose the return type by passing ``list`` or ``tuple`` or any else.
-        By default, return an ``itertools.islice`` object.
+    :param iter_type:
+        Define the returned data structure while the key is a slice object.
+        By default, ``itertools.islice`` will be returned.
     :return:
         A subscription object.
     """
     def wrapper(func):
-        return Subscription(func, sliced_type)
+        return Subscription(func, iter_type)
     return wrapper
