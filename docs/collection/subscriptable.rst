@@ -1,71 +1,54 @@
 subscriptable
 =============
 
-Subscriptable (in Python) means that an object implements the ``__getitem__(self, key)`` magic method.
+A subscription object (in Python) means it implements the ``__getitem__(self, key)`` magic method.
+
+.. autofunction:: utilitools.subscriptable
 
 Background
 ----------
 
-Let's talk about two kinds of magic methods in Python:
-
-- To use ``object(...)``, needed implement ``__call__(self, *args, **kwargs)``.
-- To use ``object[...]``, needed implement ``__getitem__(self, key)``.
-
-A piece of code of an infinite sequence implemented by function and generator:
-
 .. code-block:: python
 
-    import itertools
+    def func(*args, **kwargs):
+        ...
 
-    def function(n):
-        return n
+Valid cases of ``__getitem__``:
 
-    def generator():
-        yield from itertools.count()
-
-Both ``function`` and ``generator`` are functions acts as sequences,
-thus using ``func[...]`` is more readable and elegant than ``func(...)``.
-
-An example of ``__getitem__`` magic method:
-
-- ``function[index]``
-- ``generator[index]``
-- ``function[start:stop:step]``
-- ``generator[start:stop:step]``
+- func[index]
+- func[start:]
+- func[start:stop]
+- func[start:stop:step]
+- func[start::step]
+- func[:stop]
+- func[:stop:step]
 
 .. warning::
     Be aware ``__getitem__`` not implemented by default on functions,
-    using ``func[...]`` will raise an exception
+    thus it will raise an exception
     ``TypeError: 'function' object is not subscriptable``
-
-Source
-------
-
-https://github.com/idanhazan/utilitools/blob/main/utilitools/subscriptable.py
 
 Usage
 -----
 
 .. code-block:: python
 
-   from utilitools import subscriptable
+    from utilitools import subscriptable
 
-   @subscriptable(tuple)
-   def digitsum(n):
-      return sum(map(int, str(n)))
+    @subscriptable(tuple)
+    def digital_sum(n):
+        return sum(map(int, str(n)))
 
-   @subscriptable(list)
-   def fibonacci():
-       a, b = 0, 1
-       yield a
-       while True:
-           a, b = b, a + b
-           yield a
+    @subscriptable(list)
+    def fibonacci():
+        a, b = 0, 1
+        yield a
+        while True:
+            a, b = b, a + b
+            yield a
 
-   if __name__ == '__main__':
-       digitsum[123]       # 6
-       digitsum[10:20:3]   # (1, 4, 7, 10)
-       fibonacci[123]      # 22698374052006863956975682
-       fibonacci[10:20:3]  # [55, 233, 987, 4181]
-
-.. autofunction:: utilitools.subscriptable
+    if __name__ == '__main__':
+        print(digital_sum[123])      # 6
+        print(digital_sum[10:20:3])  # (1, 4, 7, 10)
+        print(fibonacci[123])        # 22698374052006863956975682
+        print(fibonacci[10:20:3])    # [55, 233, 987, 4181]
