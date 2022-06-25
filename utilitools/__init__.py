@@ -1,4 +1,4 @@
-from .partial import Partial as partial
+from .partial import partial
 from .singleton import Singleton as singleton
 from .subscriptable import subscriptable
 
