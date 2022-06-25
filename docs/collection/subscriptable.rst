@@ -3,13 +3,13 @@ subscriptable
 
 Subscriptable (in Python) means that an object implements the ``__getitem__(self, key)`` magic method.
 
-Usefulness
+Background
 ----------
 
 Let's talk about two kinds of magic methods in Python:
 
-- To use ``(...)``, needed implement ``__call__(self, *args, **kwargs)``.
-- To use ``[...]``, needed implement ``__getitem__(self, key)``.
+- To use ``object(...)``, needed implement ``__call__(self, *args, **kwargs)``.
+- To use ``object[...]``, needed implement ``__getitem__(self, key)``.
 
 A piece of code of an infinite sequence implemented by function and generator:
 
@@ -23,22 +23,20 @@ A piece of code of an infinite sequence implemented by function and generator:
     def generator():
         yield from itertools.count()
 
-Defining abbreviations:
+Both ``function`` and ``generator`` are functions acts as sequences,
+thus using ``func[...]`` is more readable and elegant than ``func(...)``.
 
-- ``function`` will be called ``f``.
-- ``generator`` will be called ``g``.
+An example of ``__getitem__`` magic method:
 
-Getting a single value can be done using an index and getting multiple values can be done using a slice:
-
-- ``f[index]`` equals to ``f(index)``.
-- ``g[index]`` equals to ``next(itertools.islice(g(), index, index + 1))``.
-- ``f[start:stop:step]`` equals to ``list(f(n) for n in range(start, stop, step))``.
-- ``g[start:stop:step]`` equals to ``list(itertools.islice(g(), start, stop, step))``.
+- ``function[index]``
+- ``generator[index]``
+- ``function[start:stop:step]``
+- ``generator[start:stop:step]``
 
 .. warning::
-    Both ``f`` and ``g`` by default are already implements ``__call__``, but not ``__getitem__``, that's means you will get an exception: ``TypeError: 'function' object is not subscriptable``.
-
-As seen, using ``[...]`` is more readable and elegant than ``(...)``.
+    Be aware ``__getitem__`` not implemented by default on functions,
+    using ``func[...]`` will raise an exception
+    ``TypeError: 'function' object is not subscriptable``
 
 Source
 ------
