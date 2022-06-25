@@ -3,6 +3,10 @@ import itertools
 
 
 class Partial(functools.partial):
+    """
+    The original `functools.partial <https://docs.python.org/3/library/functools.html#functools.partial>`_
+    function with the ability to accept ellipsis as a placeholder.
+    """
     def __call__(self, *args, **kwargs):
         iterator = iter(args + tuple(itertools.repeat(..., self.args.count(...) - len(args))))
         positionals = tuple(next(iterator) if arg is ... else arg for arg in self.args)
