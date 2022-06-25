@@ -1,7 +1,7 @@
 # utilitools
 
-A collection of utilities
+A collection of utilities.
 
-Installation: `pip intall utilitools`
-
-Documentation: https://utilitools.readthedocs.io
+- Installation: [Python Package Index (PyPI)](https://pypi.org/project/utilitools)
+- Documentation: [Read the Docs](https://utilitools.readthedocs.io)
+- Source Code: [GitHub](https://github.com/idanhazan/utilitools)
