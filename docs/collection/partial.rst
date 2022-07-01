@@ -19,7 +19,7 @@ Both are limited, and as a result, they require positional-only arguments withou
     Python 3.8 has started supporting positional-only arguments and some of built-in functions already use it.
     Information about the types of parameters can be found in the documentation of |inspect.Parameter.kind|.
 
-We will use the |isinstance| built-in function:
+We will use |isinstance| built-in function:
 
 .. warning::
     The function's signature in the documentation is incorrect.
