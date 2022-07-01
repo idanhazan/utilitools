@@ -6,8 +6,16 @@ A collection of utilities.
 Information
 -----------
 
-- Package: `Python Package Index (PyPI) <https://pypi.org/project/utilitools>`_
-- Source: `GitHub <https://github.com/idanhazan/utilitools>`_
+- Package: |package|
+- Source: |source|
+
+.. |package| raw:: html
+
+   <a href="https://pypi.org/project/utilitools" target="_blank">Python Package Index (PyPI)</a>
+
+.. |source| raw:: html
+
+   <a href="https://github.com/idanhazan/utilitools" target="_blank">GitHub</a>
 
 Installation
 ------------
