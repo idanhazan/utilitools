@@ -28,7 +28,7 @@ We will use the `divmod <https://docs.python.org/3/library/functions.html#divmod
 >>> inspect.signature(divmod)
 <Signature (x, y, /)>
 
-It is not possible to use function ``divmod``
+It is not possible to partial the built-in function ``divmod``
 and provide a value for parameter ``y`` (i.e. skip parameter ``x``).
 
 Usage
