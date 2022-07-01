@@ -39,7 +39,8 @@ def subscriptable(iter_type=None, /):
     A decorator that transforms a function into a subscription object.
 
     :param iter_type:
-        The type of data structure returned from the function when ``isinstance(key, slice)``, the default is ``itertools.islice``.
+        The type of data structure returned from the function when ``isinstance(key, slice)``,
+        the default is ``itertools.islice``.
     :return:
         The returned value depends on the ``key``,
         for ``isinstance(key, int)`` no change will be made and
