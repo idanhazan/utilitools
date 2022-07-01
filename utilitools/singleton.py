@@ -1,4 +1,4 @@
-class Singleton(type):
+class singleton(type):
     """
     A metaclass of Singleton pattern.
     """
