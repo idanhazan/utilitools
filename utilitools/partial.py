@@ -4,7 +4,7 @@ import itertools
 
 class partial(functools.partial):
     """
-    The original ``functools.partial`` built-in function with the ability to accept ellipsis as a placeholder.
+    The original ``functools.partial`` function with the ability to accept ``Ellipsis`` as a placeholder.
     """
     def __call__(self, *args, **kwargs):
         iterator = iter(args + tuple(itertools.repeat(..., self.args.count(...) - len(args))))
