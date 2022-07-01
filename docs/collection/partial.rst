@@ -16,21 +16,20 @@ The built-in ``functools`` module contains:
 Both are limited, and as a result, they require positional-only arguments without allowing to skip some.
 
 .. note::
+    Python 3.8 has started supporting positional-only arguments and some of built-in functions already use it.
     Information about the types of parameters can be found in the documentation of
     `inspect.Parameter.kind <https://docs.python.org/3/library/inspect.html#inspect.Parameter.kind>`_.
 
-.. code-block:: python
+We will use the `divmod <https://docs.python.org/3/library/functions.html#divmod>`_ built-in function:
 
-    def div(numerator, denominator, /):
-        return numerator / denominator
+.. warning::
+    The function's signature in the documentation is incorrect.
 
->>> div_6_n = functools.partial(div, 6)
->>> div_6_n(2)
-3.0
+>>> inspect.signature(divmod)
+<Signature (x, y, /)>
 
->>> div_n_2 = functools.partial(div, denominator=2)
->>> div_n_2(6)
-TypeError: div() got some positional-only arguments passed as keyword arguments: 'denominator'
+It is not possible to use function ``divmod``
+and provide a value for parameter ``y`` (i.e. skip parameter ``x``).
 
 Usage
 -----
@@ -39,20 +38,9 @@ Usage
 
     from utilitools import partial
 
-    def func(a, b, /, c, d, *, e, f):
-        return a, b, c, d, e, f
+    def func(a, b, c, /, d, e, f, g, h, *, i, j):
+        return a, b, c, d, e, f, g, h, i, j
 
-    func1 = partial(func, ..., 2,   3, ..., f=6)
-    func2 = partial(func, ..., 2, c=3, ..., f=6)
-
-    # func1 is similar to func(..., 2, /,   3,   ..., *, e=..., f=6)
-    # func2 is similar to func(..., 2, /, c=3, d=..., *, e=..., f=6)
-
->>> func1(1, 4, e=5)
-(1, 2, 3, 4, 5, 6)
-
->>> func1(1, d=4, e=5)
-(1, 2, 3, 4, 5, 6)
-
->>> func2(1, d=4, e=5)
-(1, 2, 3, 4, 5, 6)
+>>> partial_func = partial(func, ..., 1, ..., ..., 4, h=7, j=9)
+>>> partial_func(0, 2, 3, 5, g=6, i=8)
+(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
