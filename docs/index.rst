@@ -3,19 +3,18 @@ utilitools
 
 A collection of utilities.
 
+Information
+-----------
+
+- Package: `Python Package Index (PyPI) <https://pypi.org/project/utilitools>`_
+- Source: `GitHub <https://github.com/idanhazan/utilitools>`_
+
 Installation
 ------------
 
 ::
 
     pip install utilitools
-
-Upgradation
------------
-
-::
-
-    pip install utilitools --upgrade
 
 Collection
 ----------
