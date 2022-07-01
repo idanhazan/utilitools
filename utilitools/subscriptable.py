@@ -41,7 +41,10 @@ def subscriptable(iter_type=None, /):
     :param iter_type:
         The type of data structure returned from the function when ``isinstance(key, slice)``, the default is ``itertools.islice``.
     :return:
-        A subscription object.
+        The returned value depends on the ``key``,
+        for ``isinstance(key, int)`` no change will be made and
+        for ``isinstance(key, slice)`` the values will be wrapped by ``iter_type``,
+        otherwise ``None`` will be returned.
     """
     def wrapper(func):
         return Subscription(func, iter_type)
