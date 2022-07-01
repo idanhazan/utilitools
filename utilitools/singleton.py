@@ -1,4 +1,7 @@
 class Singleton(type):
+    """
+    A meta class of singleton design pattern.
+    """
     _instances = {}
 
     def __call__(cls, *args, **kwargs):
