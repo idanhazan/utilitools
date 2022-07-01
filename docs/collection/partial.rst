@@ -20,16 +20,16 @@ Both are limited, and as a result, they require positional-only arguments withou
     Information about the types of parameters can be found in the documentation of
     `inspect.Parameter.kind <https://docs.python.org/3/library/inspect.html#inspect.Parameter.kind>`_.
 
-We will use the `divmod <https://docs.python.org/3/library/functions.html#divmod>`_ built-in function:
+We will use the `isinstance <https://docs.python.org/3/library/functions.html#isinstance>`_ built-in function:
 
 .. warning::
     The function's signature in the documentation is incorrect.
 
->>> inspect.signature(divmod)
-<Signature (x, y, /)>
+>>> inspect.signature(isinstance)
+<Signature (obj, class_or_tuple, /)>
 
-It is not possible to partial the built-in function ``divmod``
-and provide a value for parameter ``y`` (i.e. skip parameter ``x``).
+It is not possible to partial the built-in function ``isinstance``
+and provide a value for parameter ``class_or_tuple`` (i.e. skip parameter ``obj``).
 
 Usage
 -----
