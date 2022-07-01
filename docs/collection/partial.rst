@@ -17,7 +17,7 @@ Both are limited, and as a result, they require positional-only arguments withou
 
 .. note::
     Information about the types of parameters can be found in the documentation of
-    `inspect.Parameter.kind <https://docs.python.org/3/library/inspect.html#inspect.Parameter.kind>`_
+    `inspect.Parameter.kind <https://docs.python.org/3/library/inspect.html#inspect.Parameter.kind>`_.
 
 .. code-block:: python
 
@@ -42,11 +42,11 @@ Usage
     def func(a, b, /, c, d, *, e, f):
         return a, b, c, d, e, f
 
->>> func1 = partial(func, ..., 2,   3, ..., f=6)
->>> func2 = partial(func, ..., 2, c=3, ..., f=6)
+    func1 = partial(func, ..., 2,   3, ..., f=6)
+    func2 = partial(func, ..., 2, c=3, ..., f=6)
 
->>> # func1 is similar to func(..., 2, /,   3,   ..., *, e=..., f=6)
->>> # func2 is similar to func(..., 2, /, c=3, d=..., *, e=..., f=6)
+    # func1 is similar to func(..., 2, /,   3,   ..., *, e=..., f=6)
+    # func2 is similar to func(..., 2, /, c=3, d=..., *, e=..., f=6)
 
 >>> func1(1, 4, e=5)
 (1, 2, 3, 4, 5, 6)
