@@ -1,6 +1,6 @@
 class Singleton(type):
     """
-    A meta class of singleton design pattern.
+    A metaclass of Singleton pattern.
     """
     _instances = {}
 
