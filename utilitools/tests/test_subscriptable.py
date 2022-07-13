@@ -3,12 +3,12 @@ import unittest
 import utilitools
 
 
-@utilitools.subscriptable(tuple)
+@utilitools.subscription(tuple)
 def function(n):
     return n
 
 
-@utilitools.subscriptable(list)
+@utilitools.subscription(list)
 def generator():
     yield from itertools.count()
 
