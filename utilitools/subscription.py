@@ -55,7 +55,7 @@ def subscription(iter_type=None, /):
     :param iter_type:
         | Declaration of the returned data type while the kind of key is `slice`.
         | By default, returned :func:`utilitools.islice`.
-    :type iter_type: callable, default None
+    :type iter_type: callable[iterator], default None
     :return: A subscription object that already implements the `__getitem__` magic method.
     :rtype: :class:`utilitools.subscription.Subscription`
     """
