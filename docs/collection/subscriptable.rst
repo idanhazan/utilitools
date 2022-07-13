@@ -1,9 +1,9 @@
-subscriptable
-=============
+subscription
+============
 
 A subscription object (in Python) means it implements the ``__getitem__(self, key)`` magic method.
 
-.. autofunction:: utilitools.subscriptable
+.. autofunction:: utilitools.subscription
 
 Background
 ----------
@@ -27,13 +27,13 @@ Usage
 
 .. code-block:: python
 
-    from utilitools import subscriptable
+    from utilitools import subscription
 
-    @subscriptable(tuple)
+    @subscription(tuple)
     def digital_sum(n):
         return sum(map(int, str(n)))
 
-    @subscriptable(list)
+    @subscription(list)
     def fibonacci():
         a, b = 0, 1
         yield a
