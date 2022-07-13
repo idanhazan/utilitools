@@ -55,14 +55,12 @@ def subscriptable(iter_type=None, /):
     :param iter_type:
         | Declaration of the returned data type while the kind of key is `slice`.
         | By default, returned :func:`utilitools.islice`.
-    :type iter_type:
-        | callable, default None
+    :type iter_type: callable, default None
     :return:
         | The returned value depends on the key.
         - `int` - single value.
         - `slice` - multiple values.
-    :rtype:
-        | :class:`utilitools.subscriptable.Subscription`
+    :rtype: :class:`utilitools.subscriptable.Subscription`
     """
     def wrapper(func):
         return Subscription(func, iter_type)
