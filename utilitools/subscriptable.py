@@ -3,6 +3,7 @@ import inspect
 import itertools
 import math
 import sys
+import utilitools
 
 
 class Subscription:
@@ -14,24 +15,37 @@ class Subscription:
         if isinstance(key, int):
             if inspect.isgeneratorfunction(self._func):
                 iterable = self._func()
-                iterator = itertools.islice(iterable, key + 1)
+                iterator = utilitools.islice(iterable, key + 1)
             else:
                 iterable = map(self._func, itertools.count(key))
-                iterator = itertools.islice(iterable, 1)
+                iterator = utilitools.islice(iterable, 1)
             return collections.deque(iterator, 1).pop()
         if isinstance(key, slice):
-            key = slice(
+            key = self.numeric_slice(key)
+            if inspect.isgeneratorfunction(self._func):
+                iterable = self._func()
+                iterator = utilitools.islice(iterable, key.start, key.stop, key.step)
+            else:
+                iterable = map(self._func, itertools.count(key.start, key.step))
+                iterator = utilitools.islice(iterable, math.ceil((key.stop - key.start) / key.step))
+            return self._type(iterator) if self._type is not None else iterator
+
+    @staticmethod
+    def numeric_slice(key):
+        if key.step is None or key.step > 0:
+            return slice(
                 0 if key.start is None else key.start,
                 sys.maxsize if key.stop is None else key.stop,
                 1 if key.step is None else key.step,
             )
-            if inspect.isgeneratorfunction(self._func):
-                iterable = self._func()
-                iterator = itertools.islice(iterable, key.start, key.stop, key.step)
-            else:
-                iterable = map(self._func, itertools.count(key.start, key.step))
-                iterator = itertools.islice(iterable, math.ceil((key.stop - key.start) / key.step))
-            return self._type(iterator) if self._type is not None else iterator
+        elif key.step < 0:
+            return slice(
+                sys.maxsize if key.start is None else key.start,
+                -sys.maxsize if key.stop is None else key.stop,
+                -1 if key.step is None else key.step,
+            )
+        else:
+            return slice(0, 0, 0)
 
 
 def subscriptable(iter_type=None, /):
@@ -39,13 +53,12 @@ def subscriptable(iter_type=None, /):
     A decorator that transforms a function into a subscription object.
 
     :param iter_type:
-        The type of data structure returned from the function when ``isinstance(key, slice)``,
-        the default is ``itertools.islice``.
+        | Declaration of the returned data type while the kind of key is ``slice``.
+        | By default, returned ``utilitools.islice``.
     :return:
-        The returned value depends on the ``key``,
-        for ``isinstance(key, int)`` no change will be made and
-        for ``isinstance(key, slice)`` the values will be wrapped by ``iter_type``,
-        otherwise ``None`` will be returned.
+        | The returned value depends on the key.
+        | A single value while the kind of key is ``int``.
+        | Multiple values while the kind of key is ``slice``.
     """
     def wrapper(func):
         return Subscription(func, iter_type)
