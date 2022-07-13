@@ -5,6 +5,25 @@ import sys
 
 
 def islice(iterable, *args):
+    """
+    Make an iterator that returns selected elements from an iterable (supports negative values).
+
+    .. warning::
+        | Slices with negative values require some caching of `iterable`.
+        | This function takes care to minimize the amount of memory required.
+
+    :param iterable:
+        | Unsliced iterable.
+    :type iterable: iterable[any]
+    :param args:
+        | Arguments for slice object:
+        - `stop`
+        - `start`, `stop`
+        - `start`, `stop`, `end`
+    :type args: optional[int][, optional[int], optional[int]]
+    :return: Iterator with the selected elements.
+    :rtype: :func:`utilities.islice`
+    """
     iterator = iter(iterable)
     key = slice(*args)
     step = 1 if key.step is None else key.step
