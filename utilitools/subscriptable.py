@@ -62,7 +62,7 @@ def subscriptable(iter_type=None, /):
         | A single value while the kind of key is ``int``.
         | Multiple values while the kind of key is ``slice``.
     :rtype:
-        | ``Subscription``
+        | ``utilitools.Subscription``
     """
     def wrapper(func):
         return Subscription(func, iter_type)
