@@ -10,7 +10,7 @@ import utilitools
 # ReturnAnnotation = typing.TypeVar('ReturnAnnotation', typing.Any, typing.Sequence[typing.Any])
 
 IterType = typing.Optional[typing.Callable[[typing.Iterator], typing.Any]]
-ReturnAnnotation = typing.Optional[typing.Union[typing.Any, typing.Sequence[typing.Any]]]
+ReturnAnnotation = typing.Union[typing.Any, typing.Sequence[typing.Any]]
 
 
 class Subscription:
