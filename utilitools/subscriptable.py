@@ -9,8 +9,8 @@ import utilitools
 # IterType = typing.TypeVar('IterType', bound=typing.Callable[[typing.Iterator], typing.Any])
 # ReturnAnnotation = typing.TypeVar('ReturnAnnotation', typing.Any, typing.Sequence[typing.Any])
 
-IterType = typing.Callable[[typing.Iterator], typing.Any]
-ReturnAnnotation = typing.Optional[typing.Any, typing.Sequence[typing.Any]]
+IterType = typing.Optional[typing.Callable[[typing.Iterator], typing.Any]]
+ReturnAnnotation = typing.Optional[typing.Union[typing.Any, typing.Sequence[typing.Any]]]
 
 
 class Subscription:
