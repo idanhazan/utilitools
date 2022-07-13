@@ -52,11 +52,12 @@ def subscriptable(iter_type=None, /):
     """
     A decorator that transforms a function into a subscription object.
 
-    :param iter_type: Callable[[Iterator], Any], Default: None
-        |
+    :param iter_type:
+        | ``Callable[[Iterator], Any]``, Default: ``None``
         | Declaration of the returned data type while the kind of key is ``slice``.
         | By default, returned ``utilitools.islice``.
-    :return: | Subscription
+    :return:
+        | ``Subscription``
         | The returned value depends on the key.
         | A single value while the kind of key is ``int``.
         | Multiple values while the kind of key is ``slice``.
