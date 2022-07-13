@@ -54,8 +54,9 @@ def subscriptable(iter_type=None, /):
 
     :param iter_type:
         | Declaration of the returned data type while the kind of key is ``slice``.
-        | By default, returned :function:`utilitools.islice`.
-    :type iter_type: str, optional
+        | By default, returned :func:`utilitools.islice`.
+    :type
+        | iter_type: callable, default None
     :return:
         | The returned value depends on the key.
         | A single value while the kind of key is ``int``.
