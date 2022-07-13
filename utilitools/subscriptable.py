@@ -59,8 +59,8 @@ def subscriptable(iter_type=None, /):
         | callable, default None
     :return:
         | The returned value depends on the key.
-        | A single value while the kind of key is `int`.
-        | Multiple values while the kind of key is `slice`.
+        - `int` - single value.
+        - `slice` - multiple values.
     :rtype:
         | :class:`utilitools.subscriptable.Subscription`
     """
