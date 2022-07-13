@@ -48,7 +48,7 @@ class Subscription:
             return slice(0, 0, 0)
 
 
-def subscriptable(iter_type=None, /):
+def subscription(iter_type=None, /):
     """
     A decorator that transforms a function into a subscription object.
 
@@ -57,7 +57,7 @@ def subscriptable(iter_type=None, /):
         | By default, returned :func:`utilitools.islice`.
     :type iter_type: callable, default None
     :return: A subscription object that already implements the `__getitem__` magic method.
-    :rtype: :class:`utilitools.subscriptable.Subscription`
+    :rtype: :class:`utilitools.subscription.Subscription`
     """
     def wrapper(func):
         return Subscription(func, iter_type)
