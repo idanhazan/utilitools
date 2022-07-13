@@ -53,14 +53,14 @@ def subscriptable(iter_type=None, /):
     A decorator that transforms a function into a subscription object.
 
     :param iter_type:
-        | Declaration of the returned data type while the kind of key is ``slice``.
+        | Declaration of the returned data type while the kind of key is `slice`.
         | By default, returned :func:`utilitools.islice`.
-    :type
-        | iter_type: callable, default None
+    :type iter_type:
+        | callable, default None
     :return:
         | The returned value depends on the key.
-        | A single value while the kind of key is ``int``.
-        | Multiple values while the kind of key is ``slice``.
+        | A single value while the kind of key is `int`.
+        | Multiple values while the kind of key is `slice`.
     :rtype:
         | :class:`utilitools.subscriptable.Subscription`
     """
