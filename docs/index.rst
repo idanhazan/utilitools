@@ -7,13 +7,18 @@ Information
 -----------
 
 - Package: |package|
-- Source: |source|
+- Documentation: |documentation|
+- Source Code: |source-code|
 
 .. |package| raw:: html
 
    <a href="https://pypi.org/project/utilitools" target="_blank">Python Package Index (PyPI)</a>
 
-.. |source| raw:: html
+.. |documentation| raw:: html
+
+   <a href="https://utilitools.readthedocs.io" target="_blank">Read the Docs</a>
+
+.. |source-code| raw:: html
 
    <a href="https://github.com/idanhazan/utilitools" target="_blank">GitHub</a>
 
@@ -38,6 +43,6 @@ Collection
     :caption: Collection
     :glob:
     :hidden:
-    :maxdepth: 1
+    :maxdepth: 0
 
     collection/*
