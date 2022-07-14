@@ -24,6 +24,7 @@ def islice(iterable, *args):
     :return: Iterator with the selected elements.
     :rtype: :func:`utilities.islice`
     :raises TypeError:
+        - If `stop` is undefined.
         - If `start`, `stop`, or `step` are not comparable.
     :raises ValueError:
         - If `step` is equal to zero.
