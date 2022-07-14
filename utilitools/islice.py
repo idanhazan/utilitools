@@ -26,7 +26,7 @@ def islice(iterable, *args):
     :raises TypeError:
         - If `start`, `stop`, or `step` are not comparable.
     :raises ValueError:
-        - If the slice step is equal to zero.
+        - If `step` is equal to zero.
         - If `start`, `stop`, or `step` are not `None` or `int`.
     """
     iterator = iter(iterable)
