@@ -6,7 +6,8 @@ import sys
 
 def islice(iterable, *args):
     """
-    Make an iterator that returns selected elements from an iterable (supports negative values).
+    | Make an iterator that returns selected elements from an iterable.
+    | An extension of :func:`itertools.islice` that supports negative values for `start`, `stop`, and `step`.
 
     .. note::
         In some cases, negative values require caching,
