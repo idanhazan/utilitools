@@ -23,8 +23,11 @@ def islice(iterable, *args):
     :type args: optional[int]
     :return: Iterator with the selected elements.
     :rtype: :func:`utilities.islice`
+    :raises TypeError:
+        - If `start`, `stop`, or `step` are not comparable.
     :raises ValueError:
         - If the slice step is equal to zero.
+        - If `start`, `stop`, or `step` are not `None` or `int`.
     """
     iterator = iter(iterable)
     key = slice(*args)
