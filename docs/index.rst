@@ -36,10 +36,8 @@ Collection
 
 .. toctree::
     :caption: Collection
-    :maxdepth: 2
+    :glob:
     :hidden:
+    :maxdepth: 1
 
-    collection/islice
-    collection/partial
-    collection/singleton
-    collection/subscription
+    collection/*
