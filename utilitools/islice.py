@@ -8,9 +8,9 @@ def islice(iterable, *args):
     """
     Make an iterator that returns selected elements from an iterable (supports negative values).
 
-    .. warning::
-        | Slices with negative values require some caching of `iterable`.
-        | This function takes care to minimize the amount of memory required.
+    .. note::
+        In some cases, negative values require caching,
+        this function takes care to minimize the amount of memory required.
 
     :param iterable:
         | Iterable to which the slice object will be applied.
