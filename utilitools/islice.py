@@ -23,12 +23,15 @@ def islice(iterable, *args):
     :type args: optional[int]
     :return: Iterator with the selected elements.
     :rtype: :func:`utilities.islice`
+    :raises ValueError: If the slice step is equal to zero.
     """
     iterator = iter(iterable)
     key = slice(*args)
     step = 1 if key.step is None else key.step
     length = max(getattr(iterable, '__len__', lambda: -1)(), getattr(iterable, '__length_hint__', lambda: -1)())
-    if step == 0 or length == 0:
+    if step == 0:
+        raise ValueError('slice step cannot be zero')
+    elif length == 0:
         return
     elif step > 0 and length > 0:
         start = 0 if key.start is None else key.start
