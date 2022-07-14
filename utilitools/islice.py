@@ -13,14 +13,14 @@ def islice(iterable, *args):
         | This function takes care to minimize the amount of memory required.
 
     :param iterable:
-        | An iterable to which the slice object will be applied.
+        | Iterable to which the slice object will be applied.
     :type iterable: iterable[any]
     :param args:
         | Arguments for slice object:
         - `stop`
         - `start`, `stop`
         - `start`, `stop`, `step`
-    :type args: optional[int][, optional[int], optional[int]]
+    :type args: optional[int]
     :return: Iterator with the selected elements.
     :rtype: :func:`utilities.islice`
     """
