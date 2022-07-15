@@ -50,12 +50,12 @@ class Subscription:
 
 def subscription(iter_type=None, /):
     """
-    A decorator that transforms a function into a subscription object.
+    | A decorator that transforms a function into a subscription object.
 
     :param iter_type:
-        | Declaration of the returned data type while the kind of key is `slice`.
+        | The returned data type when `key` is :func:`slice`.
         | By default, returned :func:`utilitools.islice`.
-    :type iter_type: callable[iterator], default None
+    :type iter_type: callable[iterator], default `None`
     :return: A subscription object that already implements the `__getitem__` magic method.
     :rtype: :class:`utilitools.subscription.Subscription`
     """
