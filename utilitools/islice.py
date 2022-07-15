@@ -30,7 +30,7 @@ def islice(iterable, *args):
         - If `args` is empty or contains more than three arguments.
         - If `args` values are not comparable (except `NoneType`).
     :raises ValueError:
-        - If `args` values are not `NoneType` or :type:`int`.
+        - If `args` values are not `NoneType` or `int`.
         - If `step` is equal to zero.
     """
     iterator = iter(iterable)
