@@ -53,13 +53,13 @@ def subscription(iter_type=None, /):
     | A decorator that transforms a function into a subscription object.
 
     .. note::
-        | A subscription object (in Python) means it implements the ``__getitem__(self, key)`` magic method.
+        | A subscription object (in Python) means it implements the :func:`object.__getitem__` magic method.
 
     | Subscription is a private case of function use (valid for a situation where the function behaves like a sequence).
     | When needed, the code will be more readable and will also make it easier to write in a "pythonic" style.
 
     :param iter_type:
-        | The returned data type when `key` is :func:`slice`.
+        | The returned data type when `key` is :class:`slice`.
         | By default, returned :obj:`utilitools.islice`.
     :type iter_type: `callable[iterator]`, default `None`
     :return: A subscription object that already implements the :obj:`__getitem__` magic method.
