@@ -24,13 +24,13 @@ def islice(iterable, *args):
         - `start`, `stop`, `step`
     :type args: optional[int]
     :return: Iterator with the selected elements.
-    :rtype: :func:`utilities.islice`
+    :rtype: :obj:`utilities.islice`
     :raises TypeError:
         - If 'iterable' is not iterable.
         - If `args` is empty or contains more than three arguments.
-        - If `args` values are not comparable (except `NoneType`).
+        - If `args` values are not comparable (except :obj:`NoneType`).
     :raises ValueError:
-        - If `args` values are not `NoneType` or `int`.
+        - If `args` values are not :obj:`NoneType` or :obj:`int`.
         - If `step` is equal to zero.
     """
     iterator = iter(iterable)
