@@ -1,29 +1,10 @@
 subscription
 ============
 
-A subscription object (in Python) means it implements the ``__getitem__(self, key)`` magic method.
-
 .. autofunction:: utilitools.subscription
 
-Background
-----------
-
-Subscription is a private case of function use (valid for a situation where the function behaves like a sequence).
-When needed, it makes the code more readable and, of course, “pythonic” syntax.
-
-.. code-block:: python
-
-    def func(x):
-        return x
-
->>> func[index]
-TypeError: 'function' object is not subscriptable
-
->>> func[start:stop:step]
-TypeError: 'function' object is not subscriptable
-
-Usage
------
+Examples
+--------
 
 .. code-block:: python
 
@@ -41,14 +22,22 @@ Usage
             a, b = b, a + b
             yield a
 
+Subscription (func_type: `function` | iter_type: `tuple` | key: `int`)
+
 >>> digital_sum[123]
 6
+
+Subscription (func_type: `function` | iter_type: `tuple` | key: `slice`)
 
 >>> digital_sum[10:20:3]
 (1, 4, 7, 10)
 
+Subscription (func_type: `generator` | iter_type: `list` | key: `int`)
+
 >>> fibonacci[123]
 22698374052006863956975682
+
+Subscription (func_type: `generator` | iter_type: `list` | key: `slice`)
 
 >>> fibonacci[10:20:3]
 [55, 233, 987, 4181]
