@@ -26,11 +26,12 @@ def islice(iterable, *args):
     :return: Iterator with the selected elements.
     :rtype: :func:`utilities.islice`
     :raises TypeError:
-        - If `stop` is undefined.
-        - If `start`, `stop`, or `step` are not comparable.
+        - If 'iterable' is not iterable.
+        - If `args` is empty or contains more than three arguments.
+        - If `args` values are not comparable (except `NoneType`).
     :raises ValueError:
+        - If `args` values are not `NoneType` or :type:`int`.
         - If `step` is equal to zero.
-        - If `start`, `stop`, or `step` are not `None` or `int`.
     """
     iterator = iter(iterable)
     key = slice(*args)
