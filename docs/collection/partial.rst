@@ -16,9 +16,34 @@ Examples
 
     from utilitools import partial
 
-    def func(a, b, c, /, d, e, f, g, h, *, i, j):
-        return a, b, c, d, e, f, g, h, i, j
+    def variadic_positional(*args):
+        return args
 
->>> partial_func = partial(func, ..., 1, ..., ..., 4, h=7, j=9)
->>> partial_func(0, 2, 3, 5, g=6, i=8)
-(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    def positional_only(a, b, c, d=4, e=5, f=6, /):
+        return a, b, c, d, e, f
+
+    def positional_or_keyword(a, b, c, d=4, e=5, f=6):
+        return a, b, c, d, e, f
+
+
+Variadic positional:
+
+>>> partial_func = partial(variadic_positional, ..., ..., 3, 4)
+>>> partial_func(1, 2, 5, 6)
+(1, 2, 3, 4, 5, 6)
+
+Positional-only:
+
+>>> partial_func = partial(positional_only, ..., ..., 3, 4)
+>>> partial_func(1, 2, 5)
+(1, 2, 3, 4, 5, 6)
+
+Positional or keyword:
+
+>>> partial_func = partial(positional_or_keyword, ..., 2, ..., ..., 5)
+>>> partial_func(1, 3, 4)
+(1, 2, 3, 4, 5, 6)
+
+>>> partial_func = partial(positional_or_keyword, ..., 2, ..., e=5)
+>>> partial_func(1, 3, d=4)
+(1, 2, 3, 4, 5, 6)
