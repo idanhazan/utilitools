@@ -24,7 +24,7 @@ def islice(iterable, *args):
         - `start`, `stop`
         - `start`, `stop`, `step`
     :type args: `optional[int]`
-    :return: Iterator with the selected elements.
+    :return: An iterator with the selected elements.
     :rtype: :obj:`utilitools.islice`
     :raises TypeError:
         - If `iterable` is not iterable.
