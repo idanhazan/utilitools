@@ -3,7 +3,7 @@ partial
 
 .. autoclass:: utilitools.partial
 
-    .. automodule:: __call__
+    .. automethod:: __call__
 
 Examples
 --------
