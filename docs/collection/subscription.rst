@@ -22,22 +22,22 @@ Examples
             a, b = b, a + b
             yield a
 
-Subscription (func_type: `function` | iter_type: `tuple` | key: `int`)
+Subscription from a `function` when the key is `int`:
 
 >>> digital_sum[123]
 6
 
-Subscription (func_type: `function` | iter_type: `tuple` | key: `slice`)
-
->>> digital_sum[10:20:3]
-(1, 4, 7, 10)
-
-Subscription (func_type: `generator` | iter_type: `list` | key: `int`)
+Subscription from a `generator` when the key is `int`:
 
 >>> fibonacci[123]
 22698374052006863956975682
 
-Subscription (func_type: `generator` | iter_type: `list` | key: `slice`)
+Subscription from a `function` when the key is `slice` while the type is a `tuple`:
+
+>>> digital_sum[10:20:3]
+(1, 4, 7, 10)
+
+Subscription from a `generator` when the key is `slice` while the type is a `list`:
 
 >>> fibonacci[10:20:3]
 [55, 233, 987, 4181]
