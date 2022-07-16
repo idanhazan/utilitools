@@ -22,7 +22,7 @@ Examples
         def log(self, level, msg, *args, **kwargs):
             self._logger.log(level, msg, *args, **kwargs)
 
-Creating a logger singleton instance:
+Create a logger singleton instance:
 
 >>> Logger(
 ...     name=__name__,
