@@ -12,7 +12,7 @@ class singleton(type):
 
     def __call__(cls, *args, **kwargs):
         """
-        | Verifying a single instance.
+        | Apply a single instance.
 
         :param args:
             | Arguments will be passed to the original class constructor.
