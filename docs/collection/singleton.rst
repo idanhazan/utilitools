@@ -10,21 +10,28 @@ Examples
 
 .. code-block:: python
 
-   from utilitools import singleton
+    from utilitools import singleton
 
-   class Singleton(metaclass=singleton):
-       def __init__(self, *args, **kwargs):
-           self.args = args
-           self.kwargs = kwargs
+    class Logger(metaclass=singleton):
+        def __init__(self, name, level, stream_handler, file_handler):
+            self._logger = logging.getLogger(name)
+            self._logger.setLevel(level)
+            self._logger.addHandler(stream_handler)
+            self._logger.addHandler(file_handler)
 
-       def __repr__(self):
-           return f'{self.__class__.__name__}(args={self.args}, kwargs={self.kwargs})'
+        def log(self, level, msg, *args, **kwargs):
+            self._logger.log(level, msg, *args, **kwargs)
 
->>> Singleton(1, 2, x=10, y=20)
-Singleton(args=(1, 2), kwargs={'x': 10, 'y': 20})
+Creating a logger singleton instance:
 
->>> Singleton().args
-(1, 2)
+>>> Logger(
+...     name=__name__,
+...     level=logging.DEBUG,
+...     stream_handler=logging.StreamHandler(sys.stdout),
+...     file_handler=logging.FileHandler(pathlib.Path().resolve().joinpath('singleton.log')),
+... )
 
->>> Singleton().kwargs
-{'x': 10, 'y': 20}
+Get the logger instance from anywhere:
+
+>>> logger = Logger()
+>>> logger.log(logging.DEBUG, 'A logging message.')
