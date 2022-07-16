@@ -6,7 +6,7 @@ class partial(functools.partial):
     """
     | Creating an object with a simplified signature by “freezing” some portion of a function’s arguments and keywords.
 
-    | An extension of |functools.partial| that accept `Ellipsis` as a placeholder for positional arguments.
+    | An extension of ``|functools.partial|`` that accept `Ellipsis` as a placeholder for positional arguments.
     """
     def __call__(self, *args, **kwargs):
         """
