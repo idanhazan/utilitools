@@ -1,17 +1,12 @@
 singleton
 =========
 
-Singleton pattern is a software design pattern that restricts the instantiation of a class to one "single" instance.
-
 .. autoclass:: utilitools.singleton
 
-Background
-----------
+    .. automethod:: __call__
 
-A singleton pattern is "acceptable" when it doesn't affect the execution of the code.
-
-Usage
------
+Examples
+--------
 
 .. code-block:: python
 
