@@ -12,7 +12,6 @@ class Subscription:
         self._type = type
 
     def __getitem__(self, key):
-        print(key)
         if isinstance(key, int):
             if inspect.isgeneratorfunction(self._func):
                 iterable = self._func()
