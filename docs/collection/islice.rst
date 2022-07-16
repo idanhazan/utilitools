@@ -3,6 +3,10 @@ islice
 
 .. autofunction:: utilitools.islice
 
+.. |itertools.islice| raw:: html
+
+   <a href="https://docs.python.org/3/library/itertools.html#itertools.islice" target="_blank">itertools.islice</a>
+
 Examples
 --------
 
