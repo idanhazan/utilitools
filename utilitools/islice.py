@@ -9,10 +9,11 @@ def islice(iterable, *args):
     | Make an iterator that returns selected elements from an iterable.
 
     | An extension of :func:`itertools.islice` that supports negative values for `start`, `stop`, and `step`.
+    | In some cases, negative values require caching,
+      this function takes care to minimize the amount of memory required.
 
-    .. note::
-        | In some cases, negative values require caching,
-          this function takes care to minimize the amount of memory required.
+    .. warning::
+        | Infinite caching can lead to memory issues.
 
     :param iterable:
         | Iterable to which the slice object will be applied.
@@ -24,14 +25,14 @@ def islice(iterable, *args):
         - `start`, `stop`, `step`
     :type args: `optional[int]`
     :return: Iterator with the selected elements.
-    :rtype: :obj:`utilities.islice`
+    :rtype: :obj:`utilitools.islice`
     :raises TypeError:
-        - If 'iterable' is not iterable.
+        - If `iterable` is not iterable.
         - If `args` is empty or contains more than three arguments.
         - If `args` values are not comparable (except `NoneType`).
     :raises ValueError:
         - If `args` values are not `NoneType` or `int`.
-        - If `step` is equal to zero.
+        - If `step` (from `args`) is equal to zero.
     """
     iterator = iter(iterable)
     key = slice(*args)
