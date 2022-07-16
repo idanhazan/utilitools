@@ -7,11 +7,12 @@ import utilitools
 
 
 class Subscription:
-    def __init__(self, func, iter_type):
+    def __init__(self, func, type):
         self._func = func
-        self._type = iter_type
+        self._type = type
 
     def __getitem__(self, key):
+        print(key)
         if isinstance(key, int):
             if inspect.isgeneratorfunction(self._func):
                 iterable = self._func()
@@ -32,42 +33,45 @@ class Subscription:
 
     @staticmethod
     def numeric_slice(key):
-        ltr = slice(0, sys.maxsize, 1)
-        rtl = slice(sys.maxsize, -sys.maxsize, -1)
-        if key.step < 0:
+        if key.step is None or key.step >= 0:
             return slice(
-                rtl.start if key.start is None else key.start,
-                rtl.stop if key.stop is None else key.stop,
-                rtl.step if key.step is None else key.step,
+                0 if key.start is None else key.start,
+                sys.maxsize if key.stop is None else key.stop,
+                1 if key.step is None else key.step,
+            )
+        elif key.step < 0:
+            return slice(
+                sys.maxsize if key.start is None else key.start,
+                -sys.maxsize if key.stop is None else key.stop,
+                -1 if key.step is None else key.step,
             )
         else:
-            return slice(
-                ltr.start if key.start is None else key.start,
-                ltr.stop if key.stop is None else key.stop,
-                ltr.step if key.step is None else key.step,
-            )
+            return key
 
 
-def subscription(iter_type=None, /):
+def subscription(type=None, /):
     """
-    | A decorator that transforms a function into a subscription object.
+    | Transforms a function into a subscription object.
 
-    | When a function behaves as a sequence, it can be wrapped using a subscription.
+    | Subscription is applicable on:
+    - Functions that accept one positional argument.
+    - Generators that do not accept arguments at all.
 
     .. note::
-        | A subscription object (in Python) means it implements the ``__getitem__`` magic method,
-          for more information visit |subscriptions| in Python's documentation.
+        | In both cases, they must behave as a sequence.
 
-    .. |subscriptions| raw:: html
-        <a href="https://docs.python.org/3/reference/expressions.html#subscriptions" target="_blank">Subscriptions</a>
-
-    :param iter_type:
+    :param type:
         | The returned data type when the `key` is `slice`.
         | By default, returned :obj:`utilitools.islice`.
-    :type iter_type: `callable[iterator]`, default `None`
+    :type type: `callable[iterator]`, default `None`
     :return: A subscription object that already implements the `__getitem__` magic method.
     :rtype: :obj:`utilitools.subscription.Subscription`
+    :raises TypeError:
+        - If `type` is not a `callable` that accepts an `iterator`.
+        - If the `function` does not accept one positional argument.
+        - If the `generator` accepts at least one argument.
+        - If the `key` is not `int` or `slice`.
     """
     def wrapper(func):
-        return Subscription(func, iter_type)
+        return Subscription(func, type)
     return wrapper
