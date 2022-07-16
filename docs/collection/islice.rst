@@ -32,9 +32,9 @@ Slicing an finite sequence when `start` and `stop` are negative:
 Slicing an finite sequence when `start` and `step` are negative:
 
 >>> iterable = range(50)
->>> iterator = islice(iterable, -15, 15, -3)
+>>> iterator = islice(iterable, -30, None, -3)
 >>> list(iterator)
-[35, 32, 29, 26, 23, 20, 17]
+[20, 17, 14, 11, 8, 5, 2]
 
 Slicing an finite sequence when `start`, `stop` and `step` are negative:
 
