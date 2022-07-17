@@ -5,7 +5,7 @@ class singleton(type):
     | Singleton pattern is a software design pattern
       that restricts the instantiation of a class to one “single” instance.
 
-    .. note::
+    .. tip::
         | A singleton pattern is “acceptable” when it doesn’t affect the execution of the code.
     """
     _instances = {}
