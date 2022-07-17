@@ -15,42 +15,42 @@ Examples
     from itertools import count
     from utilitools import islice
 
-Slicing an finite sequence when `start` is negative:
+Slicing a finite sequence when `start` is negative:
 
 >>> iterable = range(50)
 >>> iterator = islice(iterable, -15, None, 3)
 >>> list(iterator)
 [35, 38, 41, 44, 47]
 
-Slicing an finite sequence when `start` and `stop` are negative:
+Slicing a finite sequence when `start` and `stop` are negative:
 
 >>> iterable = range(50)
 >>> iterator = islice(iterable, -30, -20, 3)
 >>> list(iterator)
 [20, 23, 26, 29]
 
-Slicing an finite sequence when `start` and `step` are negative:
+Slicing a finite sequence when `start` and `step` are negative:
 
 >>> iterable = range(50)
 >>> iterator = islice(iterable, -30, None, -3)
 >>> list(iterator)
 [20, 17, 14, 11, 8, 5, 2]
 
-Slicing an finite sequence when `start`, `stop` and `step` are negative:
+Slicing a finite sequence when `start`, `stop` and `step` are negative:
 
 >>> iterable = range(50)
 >>> iterator = islice(iterable, -20, -30, -3)
 >>> list(iterator)
 [30, 27, 24, 21]
 
-Slicing an finite sequence when `stop` is negative:
+Slicing a finite sequence when `stop` is negative:
 
 >>> iterable = range(50)
 >>> iterator = islice(iterable, None, -30, 3)
 >>> list(iterator)
 [0, 3, 6, 9, 12, 15, 18]
 
-Slicing an finite sequence when `stop` and `step` are negative:
+Slicing a finite sequence when `stop` and `step` are negative:
 
 >>> iterable = range(50)
 >>> iterator = islice(iterable, None, -20, -3)
