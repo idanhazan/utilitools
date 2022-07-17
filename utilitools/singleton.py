@@ -15,10 +15,10 @@ class singleton(type):
         | Apply a single instance.
 
         :param args:
-            | Arguments will be passed to the original class constructor.
+            | Arguments will be passed directly to the original class constructor.
         :type args: `any`
         :param kwargs:
-            | Keyword arguments will be passed to the original class constructor.
+            | Keyword arguments will be passed directly to the original class constructor.
         :type kwargs: `any`
         :return: An instance of a selected class as a singleton object.
         :rtype: `any`
