@@ -52,12 +52,11 @@ def subscription(type=None, /):
     """
     | Transforms a function into a subscription object.
 
-    | Subscription is applicable on:
-    - Functions that accept one positional argument.
-    - Generators that do not accept arguments at all.
+    | Subscription applies to objects that behave as sequences.
 
-    .. note::
-        | In both cases, they must behave as a sequence.
+    .. attention::
+        | The object must accept precisely one positional argument if it is a `function`.
+        | The object must not accept arguments at all if it is a `generator`.
 
     :param type:
         | The returned data type when the `key` is `slice`.
