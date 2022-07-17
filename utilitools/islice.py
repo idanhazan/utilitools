@@ -9,7 +9,7 @@ def islice(iterable, *args):
     | Make an iterator that returns selected elements from an iterable.
 
     | An extension of |itertools.islice| that supports negative values for `start`, `stop`, and `step`.
-    | In some cases, negative values require caching. This function minimizes the amount of memory needed.
+    | In some cases, negative values require caching; this function minimizes the amount of memory needed.
 
     .. caution::
         | Infinite caching can lead to memory issues.
