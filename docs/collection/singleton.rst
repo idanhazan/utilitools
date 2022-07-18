@@ -10,6 +10,10 @@ Examples
 
 .. code-block:: python
 
+    import logging
+    import pathlib
+    import sys
+
     from utilitools import singleton
 
     class Logger(metaclass=singleton):
