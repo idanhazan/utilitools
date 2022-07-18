@@ -13,7 +13,7 @@ class partial(functools.partial):
         | Apply a partial function.
 
         :param args:
-            | Arguments will be passed directly to the original function.
+            | Positional arguments will be passed directly to the original function.
         :type args: `any`
         :param kwargs:
             | Keywords arguments will be passed directly to the original function.
