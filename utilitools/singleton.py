@@ -15,7 +15,7 @@ class singleton(type):
         | Apply a single instance.
 
         :param args:
-            | Arguments will be passed directly to the original class constructor.
+            | Positional arguments will be passed directly to the original class constructor.
         :type args: `any`
         :param kwargs:
             | Keyword arguments will be passed directly to the original class constructor.
