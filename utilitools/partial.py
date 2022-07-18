@@ -13,10 +13,10 @@ class partial(functools.partial):
         | Apply a partial function.
 
         :param args:
-            | Positional arguments will be passed directly to the original function.
+            | Variadic positional arguments will be passed directly to the original function.
         :type args: `any`
         :param kwargs:
-            | Keywords arguments will be passed directly to the original function.
+            | Variadic keywords arguments will be passed directly to the original function.
         :type kwargs: `any`
         :return: A partial object with a simplified signature.
         :rtype: :obj:`functools.partial`
