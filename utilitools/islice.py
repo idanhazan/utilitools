@@ -36,7 +36,7 @@ def islice(iterable, *args):
     iterator = iter(iterable)
     key = slice(*args)
     step = 1 if key.step is None else key.step
-    length = max(getattr(iterable, '__len__', lambda: -1)(), getattr(iterable, '__length_hint__', lambda: -1)())
+    length = operator.length_hint(iterable, -1)
     if step >= 0 and length >= 0:
         start = 0 if key.start is None else key.start
         stop = length if key.stop is None else key.stop
