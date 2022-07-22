@@ -23,7 +23,7 @@ class partial(functools.partial):
               to the function during initialization.
         :type kwargs: `any`
         :return: A partial object with a simplified signature.
-        :rtype: :obj:`functools.partial`
+        :rtype: :obj:`utilitools.partial`
         :raises TypeError:
             - If `function` is not callable.
         """
@@ -42,8 +42,8 @@ class partial(functools.partial):
             | Variadic keywords arguments will be passed directly
               to the function after initialization.
         :type kwargs: `any`
-        :return: A partial object with a simplified signature.
-        :rtype: :obj:`utilitools.partial`
+        :return: The output of the function.
+        :rtype: `any`
         :raises BaseException:
             - If `args` does not match to function.
             - If `kwargs` does not match to function.
