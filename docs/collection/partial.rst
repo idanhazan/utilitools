@@ -28,19 +28,19 @@ Examples
         return a, b, c, d, e, f
 
 
-Variadic positional:
+Partial function with variadic positional arguments:
 
 >>> partial_func = partial(variadic_positional, ..., ..., 3, 4)
 >>> partial_func(1, 2, 5, 6)
 (1, 2, 3, 4, 5, 6)
 
-Positional-only:
+Partial function with positional-only arguments:
 
 >>> partial_func = partial(positional_only, ..., ..., 3, 4)
 >>> partial_func(1, 2, 5)
 (1, 2, 3, 4, 5, 6)
 
-Positional or keyword:
+Partial function with positional or keyword arguments:
 
 >>> partial_func = partial(positional_or_keyword, ..., 2, ..., ..., 5)
 >>> partial_func(1, 3, 4)
