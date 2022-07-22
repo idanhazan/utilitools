@@ -3,6 +3,8 @@ partial
 
 .. autoclass:: utilitools.partial
 
+    .. automethod:: __new__
+
     .. automethod:: __call__
 
 .. |functools.partial| raw:: html
