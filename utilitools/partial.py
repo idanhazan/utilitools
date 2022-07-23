@@ -4,12 +4,13 @@ import itertools
 
 class partial(functools.partial):
     """
-    | Creates an object with a simplified signature
-      by “freezing” some portion of a function’s arguments and keywords.
+    | An extended version (handling positional arguments)
+      that inherits from |functools.partial|.
     """
     def __new__(cls, function, /, *args, **kwargs):
         """
-        | The object inherits from |functools.partial|.
+        | Creates an object with a simplified signature
+          by “freezing” some portion of a function’s arguments and keywords.
 
         :param function:
             | Callable to which the partial object will be applied.
