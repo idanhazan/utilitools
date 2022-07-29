@@ -32,6 +32,7 @@ Installation
 Collection
 ----------
 
+- `flatten <https://utilitools.readthedocs.io/en/latest/collection/flatten.html>`_
 - `islice <https://utilitools.readthedocs.io/en/latest/collection/islice.html>`_
 - `partial <https://utilitools.readthedocs.io/en/latest/collection/partial.html>`_
 - `singleton <https://utilitools.readthedocs.io/en/latest/collection/singleton.html>`_
