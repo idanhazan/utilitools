@@ -12,7 +12,7 @@ def flatten(iterable, /, *, dictionaries='keys', levels=None, types=None):
     :param dictionaries:
         | The way iterates over dictionaries.
         | The possible options are `items`, `keys`, and `values`.
-        | By default, it will iterate on 'keys'.
+        | By default, it will iterate on `keys`.
     :type dictionaries: str
 
     :param levels:
