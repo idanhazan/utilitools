@@ -4,4 +4,4 @@ from utilitools.utilities.partial import partial
 from utilitools.utilities.singleton import singleton
 from utilitools.utilities.subscription import subscription
 
-__version__ = (0, 0, 13)
+__version__ = (0, 0, 14)
