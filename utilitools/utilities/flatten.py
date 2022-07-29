@@ -26,7 +26,7 @@ def flatten(iterable, /, *, dictionaries='keys', levels=None, types=None):
     :type types: tuple[type]
 
     :return: An iterator with flatten items.
-    :rtype: `collections.Iterator[typing.Any]`
+    :rtype: `collections.Iterator`
     """
     levels = float('inf') if levels is None else levels
     types = (bytes, str) if types is None else (bytes, str) + types
