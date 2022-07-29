@@ -61,10 +61,10 @@ def subscription(type=None, /):
     :param type:
         | The returned data type when the `key` is `slice`.
         | By default, returned :obj:`utilitools.islice`.
-    :type type: collections.Callable[typing.Iterator]
+    :type type: collections.Callable
 
     :return: A subscription object that already implements the `__getitem__` magic method.
-    :rtype: :obj:`utilitools.utilities.subscription.Subscription`
+    :rtype: :obj:'utilitools.utilities.Subscription'
 
     :raises TypeError:
         - If `type` is not a `callable` that accepts an `iterator`.
