@@ -28,7 +28,7 @@ class partial(functools.partial):
         :type kwargs: typing.Any
 
         :return: A partial object with a simplified signature.
-        :rtype: :obj:'utilitools.partial'
+        :rtype: :obj:`utilitools.partial`
 
         :raises TypeError:
             - If `function` is not callable.
