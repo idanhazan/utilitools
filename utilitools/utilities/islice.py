@@ -14,22 +14,28 @@ def islice(iterable, *args):
     .. caution::
         | Infinite caching can lead to memory issues.
 
-    :param iterable:
+    Parameters
+    ----------
+    iterable : collections.Iterable[typing.Any]
         | Iterable to which the slice object will be applied.
-    :type iterable: `iterable[any]`
-    :param args:
+    args : int | None
         | Arguments to create a slice object:
         - `stop`
         - `start`, `stop`
         - `start`, `stop`, `step`
-    :type args: `optional[int]`
-    :return: An iterator with the selected elements.
-    :rtype: :obj:`utilitools.islice`
-    :raises TypeError:
+
+    Yields
+    ------
+    typing.Any
+        | An iterator with the selected elements.
+
+    Raises
+    ------
+    TypeError
         - If `iterable` is not iterable.
         - If `args` is empty or contains more than three arguments.
         - If `args` values are not comparable (except `NoneType`).
-    :raises ValueError:
+    ValueError
         - If `args` values are not `NoneType` or `int`.
         - If `step` (from `args`) is equal to zero.
     """
