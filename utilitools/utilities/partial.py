@@ -10,22 +10,27 @@ class partial(functools.partial):
     def __new__(cls, function, /, *args, **kwargs):
         """
         | Creates an object with a simplified signature
-          by “freezing” some portion of a function’s arguments and keywords.
+          by “freezing” some portion of a function’s positional and keyword arguments.
 
-        :param function:
+        Parameters
+        ----------
+        function : collections.Callable
             | Callable to which the partial object will be applied.
-        :type function: `callable[any]`
-        :param args:
+        args : typing.Any
             | Variadic positional arguments will be passed directly
               to the function during initialization.
-        :type args: `any`
-        :param kwargs:
+        kwargs : typing.Any
             | Variadic keywords arguments will be passed directly
               to the function during initialization.
-        :type kwargs: `any`
-        :return: A partial object with a simplified signature.
-        :rtype: :obj:`utilitools.partial`
-        :raises TypeError:
+
+        Returns
+        -------
+        utilitools.partial
+            | A partial object with a simplified signature.
+
+        Raises
+        ------
+        TypeError
             - If `function` is not callable.
         """
         return super(partial, cls).__new__(cls, function, *args, **kwargs)
@@ -35,17 +40,18 @@ class partial(functools.partial):
         | An extension that accepts `Ellipsis`
           as a placeholder for positional arguments.
 
-        :param args:
+        Parameters
+        ----------
+        args : typing.Any
             | Variadic positional arguments will be passed directly
               to the function after initialization.
-        :type args: `any`
-        :param kwargs:
+        kwargs : typing.Any
             | Variadic keywords arguments will be passed directly
               to the function after initialization.
-        :type kwargs: `any`
-        :return: The output of the function.
-        :rtype: `any`
-        :raises BaseException:
+
+        Raises
+        ------
+        BaseException
             - If `args` does not match to function.
             - If `kwargs` does not match to function.
         """
