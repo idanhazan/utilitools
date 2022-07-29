@@ -58,13 +58,20 @@ def subscription(type=None, /):
         - The object must accept precisely one positional argument if it is a `function`.
         - The object must not accept arguments at all if it is a `generator`.
 
-    :param type:
+    Parameters
+    ----------
+    type : collections.Callable[typing.Iterator]
         | The returned data type when the `key` is `slice`.
         | By default, returned :obj:`utilitools.islice`.
-    :type type: `callable[iterator]`, default `None`
-    :return: A subscription object that already implements the `__getitem__` magic method.
-    :rtype: :obj:`utilitools.subscription.Subscription`
-    :raises TypeError:
+
+    Returns
+    -------
+    utilitools.subscription.Subscription
+        | A subscription object that already implements the `__getitem__` magic method.
+
+    Raises
+    ------
+    TypeError
         - If `type` is not a `callable` that accepts an `iterator`.
         - If the `function` does not accept one positional argument.
         - If the `generator` accepts at least one argument.
