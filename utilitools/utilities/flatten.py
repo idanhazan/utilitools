@@ -7,6 +7,7 @@ def flatten(iterable, /, *, dictionaries='keys', levels=None, types=None):
 
     Parameters
     ----------
+
     iterable : collections.Iterable
         | Iterable to be flattened.
     dictionaries : str
@@ -22,6 +23,7 @@ def flatten(iterable, /, *, dictionaries='keys', levels=None, types=None):
 
     Yields
     ------
+
     typing.Any
         | An iterator with flatten items.
     """
