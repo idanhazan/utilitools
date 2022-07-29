@@ -64,7 +64,7 @@ def subscription(type=None, /):
     :type type: collections.Callable
 
     :return: A subscription object that already implements the `__getitem__` magic method.
-    :rtype: :obj:'utilitools.utilities.Subscription'
+    :rtype: :obj:`utilitools.utilities.Subscription`
 
     :raises TypeError:
         - If `type` is not a `callable` that accepts an `iterator`.
