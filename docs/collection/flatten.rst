@@ -1,5 +1,5 @@
-islice
-======
+flatten
+=======
 
 .. autofunction:: utilitools.flatten
 
