@@ -14,14 +14,19 @@ class singleton(type):
         """
         | Apply a single instance.
 
-        :param args:
-            | Variadic positional arguments will be passed directly to the original class constructor.
-        :type args: `any`
-        :param kwargs:
-            | Variadic keyword arguments will be passed directly to the original class constructor.
-        :type kwargs: `any`
-        :return: An instance of a selected class as a singleton object.
-        :rtype: `singleton[type]`
+        Parameters
+        ----------
+        args : typing.Any
+            | Variadic positional arguments will be passed directly
+              to the original class constructor.
+        kwargs : typing.Any
+            | Variadic keyword arguments will be passed directly
+              to the original class constructor.
+
+        Returns
+        -------
+        typing.Any
+            | An instance of a selected class as a singleton object.
         """
         if cls not in cls._instances:
             cls._instances[cls] = super(singleton, cls).__call__(*args, **kwargs)
