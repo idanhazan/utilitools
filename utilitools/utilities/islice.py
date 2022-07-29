@@ -16,28 +16,28 @@ def islice(iterable, *args):
 
     Parameters
     ----------
-    iterable : collections.Iterable[typing.Any]
-        | Iterable to which the slice object will be applied.
-    args : int | None
-        | Arguments to create a slice object:
-        - `stop`
-        - `start`, `stop`
-        - `start`, `stop`, `step`
+        iterable : collections.Iterable[typing.Any]
+            | Iterable to which the slice object will be applied.
+        args : int | None
+            | Arguments to create a slice object:
+            - `stop`
+            - `start`, `stop`
+            - `start`, `stop`, `step`
 
     Yields
     ------
-    typing.Any
-        | An iterator with the selected elements.
+        typing.Any
+            | An iterator with the selected elements.
 
     Raises
     ------
-    TypeError
-        - If `iterable` is not iterable.
-        - If `args` is empty or contains more than three arguments.
-        - If `args` values are not comparable (except `NoneType`).
-    ValueError
-        - If `args` values are not `NoneType` or `int`.
-        - If `step` (from `args`) is equal to zero.
+        TypeError
+            - If `iterable` is not iterable.
+            - If `args` is empty or contains more than three arguments.
+            - If `args` values are not comparable (except `NoneType`).
+        ValueError
+            - If `args` values are not `NoneType` or `int`.
+            - If `step` (from `args`) is equal to zero.
     """
     iterator = iter(iterable)
     key = slice(*args)
