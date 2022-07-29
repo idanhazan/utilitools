@@ -9,8 +9,9 @@ class partial(functools.partial):
     """
     def __new__(cls, function, /, *args, **kwargs):
         """
-        | Creates an object with a simplified signature
-          by “freezing” some portion of a function’s positional and keyword arguments.
+        | Creates an object with
+          a simplified signature by “freezing” some portion of
+          a function’s positional and keyword arguments.
 
         Parameters
         ----------
