@@ -17,7 +17,7 @@ def flatten(iterable, /, *, dictionaries='keys', levels=None, types=None):
 
     :param levels:
         | Nesting levels we want to flatten in the iterator.
-        | By default, will be set to `flaot('inf')`.
+        | By default, will be set to `float('inf')`.
     :type levels: int
 
     :param types:
